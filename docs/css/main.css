@@ -1,0 +1,108 @@
+﻿html,body {
+   height: 100%;
+ 	margin: 0;
+	padding: 0;
+}
+
+body {
+    font-family: "MuseoSans","Segoe UI",Arial,sans-serif;
+}
+
+#leftmenu {
+	position: fixed;
+	width: 250px;
+	height: 100%;
+	overflow: scroll;
+	white-space: nowrap;
+	background-color: #f1f1f1;
+}
+
+#leftmenu::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+#leftmenu::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+	background-color: #c1c1c1;
+}
+#leftmenu::-webkit-scrollbar-corner {
+	background-color: #f1f1f1;    
+}
+
+#splitter {
+    width: 10px;
+    height: 100%
+}
+
+.content {
+	margin-left: 250px;
+	overflow: auto;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.index ul.root {
+	padding: 0px;
+}
+
+.index ul.indent {
+	padding: 0px;
+	padding-left: 15px;
+}
+
+.index li {
+	list-style-type: none;
+	white-space: nowrap;	
+}
+
+.index li a {
+	display: inline-block;
+	padding: 5px;
+	white-space: nowrap;	
+	color: black;
+}
+
+.index li a:hover {
+	background-color: #e1e1e1;
+}
+
+.treemenu li { 
+	list-style: none; 
+}
+
+.treemenu .toggler {
+    cursor: pointer;
+	width: 15px;
+}
+
+.treemenu .toggler:before {
+    display: inline-block;
+	width: 15px;
+}
+
+/*
+li.tree-empty > .toggler { color: #aaa; }
+li.tree-empty > .toggler:before { content: "\2212"; }
+*/
+li.tree-closed > .toggler:before { 
+	content: "+"; 
+	width: 15px;
+}
+
+li.tree-opened > .toggler:before { 
+	content: "-"; 
+	width: 15px;
+}
+
+li.tree-closed { 
+	font-weight: bold;
+}
+
+li.tree-opened  { 
+	font-weight: bold;
+}
+
+li.tree-empty  { 
+	font-weight: normal;
+}
+

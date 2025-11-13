@@ -1,0 +1,11 @@
+
+IQueryable&lt;JournalEntryVoucher&gt;
+================
+
+
+
+
+
+
+
+

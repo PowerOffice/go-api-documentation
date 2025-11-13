@@ -1,0 +1,11 @@
+
+IEqualityComparer&lt;T&gt;
+================
+
+
+
+
+
+
+
+

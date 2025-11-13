@@ -1,0 +1,22 @@
+
+public void LocationService(IAuthorization authorization, Host host)
+=======
+**Namespace:** GoApi.Projects
+
+Initializes a new instance of the [LocationService](GoApi.Projects.LocationService.md) class.
+
+### Syntax
+```csharp
+	public void LocationService(IAuthorization authorization, Host host)
+```
+
+### Parameters
+Name | Type | Description
+:----|:-----|:------------
+authorization|[IAuthorization](GoApi.Core.IAuthorization.md)|The authorization.
+host|[Host](GoApi.Core.Global.Host.md)|The endpoint host
+
+
+
+
+

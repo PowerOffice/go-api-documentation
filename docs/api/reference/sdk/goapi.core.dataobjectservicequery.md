@@ -1,0 +1,11 @@
+
+DataObjectServiceQuery
+================
+
+Class DataObjectServiceQuery.
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+
+EqualityComparer&lt;T&gt;
+================
+
+
+
+
+
+
+
+
