@@ -1,1 +1,21 @@
 .vscode/*
+
+# Dependencies
+node_modules
+openapi/node_modules
+
+# Build output
+dist/
+
+# Environment files
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Package manager
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
