@@ -27,7 +27,7 @@ jobs:
           cache: 'npm'
           
       - name: Install dependencies
-      - run: npm install
+        run: npm install
       
       - name: Install with ci
         run: npm ci
@@ -61,4 +61,5 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BRAVE_COAST_0B10F1503 }}
           action: "close"
+
 
