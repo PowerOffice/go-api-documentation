@@ -22,4 +22,5 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: '3.13'
-    - run: python ./openapi/remove_namespaces_from_doc.py
+    - name: Remove system namespaces
+      run: python ./openapi/remove_namespaces_from_doc.py
