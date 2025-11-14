@@ -1,9 +1,12 @@
 <html>
-<title>PowerOffice Go Api</title>
-<head>
+	<head>
+		<meta charset="utf-8">
+
+		<title>PowerOffice Go Api</title>
+
 	 <script>
-        // Set your base API URL here
-        const apiBaseUrl = "https://blue-mud-080cd9503.6.azurestaticapps.net";
+        // Dynamically set the API base URL to the current deployment URL
+        const apiBaseUrl = window.location.origin;
         window.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('[data-api-web]').forEach(function(link) {
                 const path = link.getAttribute('data-api-web');
@@ -11,7 +14,7 @@
             });
         });
     </script>
-	<link rel="icon" type="image/png" href="/web/favicon.png" />
+	<link rel="icon" type="image/png" href="favicon.png">
 	<style>
 	body {
 		padding: 0;
@@ -114,16 +117,17 @@
 	<div style="width: 100%; text-align: center; height: 300px; overflow: hidden;">
 		<div style="display: inline-block; width: 1000px; text-align: left;">
 			<div style="float: left;">
-				<img src="deviser_orange-sky.png">
+				<img src="deviser_orange-sky.png" alt="orange sky background">
 			</div>
 			<div style="float: right; padding-top: 40px; width: 500px;">
 				<h1>Welcome to the PowerOffice Go API</h1>
 				<b>Hello Developers!</b> We in the PowerOffice Go team aim to provide you with
 				a simple to use, yet powerful API to interface your application with PowerOffice Go.
 				<p>
-				This site is the starting point and the hub for finding informaiton about developing
+				This site is the starting point and the hub for finding information about developing
 				third party application that interacts with PowerOffice Go
-			</div>
+				</p>
+		</div>
 		</div>
 	</div>
 
