@@ -26,6 +26,8 @@ jobs:
           python-version: '3.13'
       - name: Remove system namespaces
         run: python ./openapi/remove_namespaces_from_doc.py
+      - name: Show removed namespaces
+        run: git diff --name-only || true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
