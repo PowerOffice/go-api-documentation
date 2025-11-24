@@ -38,6 +38,7 @@ const copyStaticFilesPlugin = () => ({
     const staticFiles = [
       'robots.txt',
       'api-docs.html',
+      'backend-changes.html',
       'poweroffice-api-index.html',
       'poweroffice-api.json',
       'bakgrunn_skyer.png',

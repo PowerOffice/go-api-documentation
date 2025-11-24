@@ -18,11 +18,75 @@ function initDarkMode() {
 	}
 }
 
+// Sidebar resize functionality
+function initSidebarResize() {
+	const leftMenu = document.getElementById('leftmenu');
+	const resizeHandle = document.getElementById('resize-handle');
+	const content = document.querySelector('.content');
+	
+	if (!leftMenu || !resizeHandle || !content) return;
+	
+	// Load saved width from localStorage
+	const savedWidth = localStorage.getItem('sidebarWidth');
+	if (savedWidth) {
+		const width = parseInt(savedWidth);
+		leftMenu.style.width = width + 'px';
+		resizeHandle.style.left = width + 'px';
+		content.style.marginLeft = width + 'px';
+	}
+	
+	let isResizing = false;
+	let startX;
+	let startWidth;
+	
+	resizeHandle.addEventListener('mousedown', function(e) {
+		isResizing = true;
+		startX = e.clientX;
+		startWidth = leftMenu.offsetWidth;
+		resizeHandle.classList.add('dragging');
+		document.body.style.cursor = 'col-resize';
+		document.body.style.userSelect = 'none';
+		e.preventDefault();
+	});
+	
+	document.addEventListener('mousemove', function(e) {
+		if (!isResizing) return;
+		
+		const delta = e.clientX - startX;
+		let newWidth = startWidth + delta;
+		
+		// Enforce min/max width
+		const minWidth = 200;
+		const maxWidth = 600;
+		newWidth = Math.max(minWidth, Math.min(maxWidth, newWidth));
+		
+		leftMenu.style.width = newWidth + 'px';
+		resizeHandle.style.left = newWidth + 'px';
+		content.style.marginLeft = newWidth + 'px';
+	});
+	
+	document.addEventListener('mouseup', function() {
+		if (isResizing) {
+			isResizing = false;
+			resizeHandle.classList.remove('dragging');
+			document.body.style.cursor = '';
+			document.body.style.userSelect = '';
+			
+			// Save the new width to localStorage
+			localStorage.setItem('sidebarWidth', leftMenu.offsetWidth);
+		}
+	});
+}
+
 // Initialize on page load
 if (document.readyState === 'loading') {
-	document.addEventListener('DOMContentLoaded', initDarkMode);
+	document.addEventListener('DOMContentLoaded', function() {
+		initDarkMode();
+		initSidebarResize();
+	});
 } else {
 	initDarkMode();
+	initSidebarResize();
 }
 
 godocs = {

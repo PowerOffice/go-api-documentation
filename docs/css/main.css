@@ -67,12 +67,14 @@ body.dark-mode h6 {
 
 #leftmenu {
 	position: fixed;
-	width: 250px;
+	width: 310px;
 	height: 100%;
 	overflow: scroll;
 	white-space: nowrap;
 	background-color: #f1f1f1;
 	transition: background-color 0.3s ease;
+	min-width: 200px;
+	max-width: 600px;
 }
 
 body.dark-mode #leftmenu {
@@ -91,13 +93,35 @@ body.dark-mode #leftmenu {
 	background-color: #f1f1f1;    
 }
 
+#resize-handle {
+	position: fixed;
+	left: 310px;
+	top: 0;
+	width: 5px;
+	height: 100%;
+	cursor: col-resize;
+	background-color: transparent;
+	z-index: 1000;
+	transition: background-color 0.2s ease;
+}
+
+#resize-handle:hover,
+#resize-handle.dragging {
+	background-color: #ea802c;
+}
+
+body.dark-mode #resize-handle:hover,
+body.dark-mode #resize-handle.dragging {
+	background-color: #fa903c;
+}
+
 #splitter {
     width: 10px;
     height: 100%
 }
 
 .content {
-	margin-left: 250px;
+	margin-left: 310px;
 	overflow: auto;
 	padding-left: 20px;
 	padding-right: 20px;
