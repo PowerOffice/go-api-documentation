@@ -9,18 +9,14 @@ const copyStaticFilesPlugin = () => ({
   closeBundle() {
     const distDir = join(process.cwd(), 'dist')
     
-    // Copy swagger.json and swag.json to dist/openapi
+    // Copy swagger.json to dist/openapi
     const openapiDestDir = join(distDir, 'openapi')
     mkdirSync(openapiDestDir, { recursive: true })
     copyFileSync(
       join(process.cwd(), 'openapi', 'swagger.json'),
       join(openapiDestDir, 'swagger.json')
     )
-    copyFileSync(
-      join(process.cwd(), 'openapi', 'swag.json'),
-      join(openapiDestDir, 'swag.json')
-    )
-    console.log('✓ Copied swagger.json and swag.json to dist/openapi')
+    console.log('✓ Copied swagger.jso to dist/openapi')
     
     // Copy docs folder
     const docsSource = join(process.cwd(), 'docs')
