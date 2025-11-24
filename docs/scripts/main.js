@@ -1,4 +1,31 @@
-﻿godocs = {
+﻿// Dark mode functionality
+function initDarkMode() {
+	const darkMode = localStorage.getItem('darkMode') === 'true';
+	if (darkMode) {
+		document.body.classList.add('dark-mode');
+		document.getElementById('sunIcon').style.display = 'block';
+		document.getElementById('moonIcon').style.display = 'none';
+	}
+	
+	const toggle = document.getElementById('darkModeToggle');
+	if (toggle) {
+		toggle.addEventListener('click', function() {
+			const isDark = document.body.classList.toggle('dark-mode');
+			localStorage.setItem('darkMode', isDark);
+			document.getElementById('sunIcon').style.display = isDark ? 'block' : 'none';
+			document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
+		});
+	}
+}
+
+// Initialize on page load
+if (document.readyState === 'loading') {
+	document.addEventListener('DOMContentLoaded', initDarkMode);
+} else {
+	initDarkMode();
+}
+
+godocs = {
 	mainUrl: 'Welcome.md',
 
 	reloadContent() {
