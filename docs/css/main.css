@@ -41,6 +41,18 @@ body {
 	padding-right: 20px;
 }
 
+.docs-logo {
+	padding: 15px;
+	background: white;
+	border-bottom: 1px solid #e1e1e1;
+	text-align: center;
+}
+
+.docs-logo img {
+	height: 35px;
+	object-fit: contain;
+}
+
 .index ul.root {
 	padding: 0px;
 }
