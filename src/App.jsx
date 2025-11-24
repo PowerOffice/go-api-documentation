@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import BackendChangesNotice from './components/BackendChangesNotice';
 import GettingStarted from './components/GettingStarted';
 import ResourceCards from './components/ResourceCards';
 
@@ -27,6 +28,7 @@ function App() {
     <div className="app">
       <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <Hero />
+      <BackendChangesNotice />
       <GettingStarted />
       <ResourceCards />
       <div className="skybox" />

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Backend Changes - PowerOffice Go API</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <style>
+      :root {
+        --bg-primary: #f5f5f5;
+        --bg-secondary: white;
+        --bg-code: #f4f4f4;
+        --bg-placeholder: #f9f9f9;
+        --text-primary: #333;
+        --text-secondary: #555;
+        --text-muted: #666;
+        --header-bg: #1a1a1a;
+        --header-text: white;
+        --accent: #ff6b35;
+        --alert-bg: #fff3cd;
+        --alert-border: #ffc107;
+        --alert-text: #856404;
+        --border-color: #ddd;
+      }
+
+      body.dark-mode {
+        --bg-primary: #09090b;
+        --bg-secondary: #18181b;
+        --bg-code: #27272a;
+        --bg-placeholder: #27272a;
+        --text-primary: #e4e4e7;
+        --text-secondary: #d4d4d8;
+        --text-muted: #a1a1aa;
+        --header-bg: #0a0a0a;
+        --header-text: #fafafa;
+        --accent: #fa903c;
+        --alert-bg: #422006;
+        --alert-border: #ea802c;
+        --alert-text: #fef3c7;
+        --border-color: #3f3f46;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        line-height: 1.6;
+        color: var(--text-primary);
+        background: var(--bg-primary);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      .header {
+        background: var(--header-bg);
+        color: var(--header-text);
+        padding: 1rem 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+          position: sticky; /* Make header sticky */
+          top: 0; /* Set top position */
+          z-index: 1000; /* Ensure header is above other content */
+          /* Slight translucency for modern feel */
+      }
+
+      .header-content h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .header-content a {
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      .header-content a:hover {
+        text-decoration: underline;
+      }
+
+      .dark-mode-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        transition: all 0.3s ease;
+        border-radius: 8px;
+      }
+
+      .dark-mode-toggle:hover {
+        color: var(--accent);
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .dark-mode-toggle svg {
+        display: block;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: var(--bg-secondary);
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+
+      .alert {
+        background: var(--alert-bg);
+        border-left: 4px solid var(--alert-border);
+        padding: 1rem;
+        margin-bottom: 2rem;
+        border-radius: 4px;
+      }
+
+      .alert h2 {
+        color: var(--alert-text);
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+      }
+
+      .content h1 {
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+        font-size: 2rem;
+      }
+
+      .content h2 {
+        color: var(--text-primary);
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 0.5rem;
+      }
+
+      .content h3 {
+        color: var(--text-secondary);
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.2rem;
+      }
+
+      .content p {
+        margin-bottom: 1rem;
+      }
+
+      .content ul {
+        margin-left: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .content li {
+        margin-bottom: 0.5rem;
+      }
+
+      .content code {
+        background: var(--bg-code);
+        padding: 0.2rem 0.4rem;
+        border-radius: 3px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9em;
+        color: var(--text-primary);
+      }
+
+      .content pre {
+        background: var(--bg-code);
+        padding: 1rem;
+        border-radius: 4px;
+        overflow-x: auto;
+        margin-bottom: 1rem;
+        border: 1px solid var(--border-color);
+      }
+
+      .content pre code {
+        background: none;
+        padding: 0;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        word-break: break-all;
+      }
+
+      .placeholder {
+        color: var(--text-muted);
+        font-style: italic;
+        background: var(--bg-placeholder);
+        padding: 2rem;
+        border-radius: 4px;
+        text-align: center;
+        margin: 2rem 0;
+        border: 1px solid var(--border-color);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-content">
+        <h1>Backend Changes - PowerOffice Go API</h1>
+        <a href="/">← Back to Documentation Home</a>
+      </div>
+      <button 
+        id="darkModeToggle" 
+        class="dark-mode-toggle" 
+        aria-label="Toggle dark mode"
+        title="Toggle dark mode"
+      >
+
+       
+        <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+
+
+    <div class="container">
+      <div class="alert">
+        <h2>⚠️ Important Notice</h2>
+        <p>This page contains critical information about backend changes that may affect your integration with the PowerOffice Go API. Please read carefully.</p>
+      </div>
+
+      <div class="content">
+        <h1>Backend Changes and Updates</h1>
+
+        <h2>Why We Made These Changes</h2>
+        <p>
+          We have upgraded the PowerOffice Go API backend from <strong>.NET Framework 4.7.2</strong> to <strong>.NET 8</strong>. 
+          This upgrade was necessary to keep our platform up to date with current technology standards and ensure we can continue 
+          to deliver the best possible experience.
+        </p>
+        
+        <h3>Benefits of the Upgrade</h3>
+        <ul>
+          <li><strong>Performance Gains:</strong> .NET 8 offers significant performance improvements, resulting in faster response times and better scalability.</li>
+          <li><strong>Enhanced Logging and Tracking:</strong> Improved observability tools allow us to better monitor, diagnose, and resolve issues quickly.</li>
+          <li><strong>Modern Technology Stack:</strong> Staying current with the latest .NET platform ensures long-term support, security updates, and access to modern features.</li>
+        </ul>
+
+        <h3>What This Means for You</h3>
+        <p>
+          While we have worked to minimize disruption, <strong>you may need to make some adjustments to your integration code</strong> 
+          to ensure compatibility with the upgraded backend. The changes required are typically minor, but they are important 
+          to review and implement.
+        </p>
+
+        <h3>SDK</h3>
+        <p>
+          A new version of the PowerOffice Go SDK is being prepared to support these backend changes. While the upgrade should be backward compatible, we recommend using the latest SDK version to take full advantage of the improvements and ensure compatibility with the updated backend.
+        </p>
+
+        <h3>⚠️ Important: Temporary Exclusion Available</h3>
+        <p>
+          If you need more time to adapt your integration, <strong>we have tools available to temporarily exclude your application 
+          from this upgrade</strong>. However, please note that this is a temporary measure only.
+        </p>
+        <p>
+          <strong>Everyone MUST eventually migrate to the new backend.</strong> Failure to do so will result in your integration 
+          ceasing to function when the old backend is decommissioned. We strongly encourage you to plan your migration as soon 
+          as possible to avoid any service interruptions.
+        </p>
+
+        <h3>TL;DR</h3>
+        Access token has changed to JWT format, refresh tokens are obsolete, and request headers must be form-data or x-www-form-urlencoded.
+
+        <h2>Breaking Changes</h2>
+        <p>Below are the key changes that may affect your integration:</p>
+
+        <h2>Authentication</h2>
+          <h3>- Request header <i>must</i> be form-data or x-www-form-urlencoded</h3>
+        <h3>Example Request</h3>
+        <pre><code>POST /OAuth/Token HTTP/1.1
+        Host: localhost:7239
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: ••••••
+        Content-Length: 29
+        
+        grant_type=client_credentials</code></pre>
+
+        <h3>- Access token format is updated to be JSON Web Token compatible.</h3> <p>The new access token contains information about the client. JWT is documented in <a href="https://datatracker.ietf.org/doc/html/rfc7519">RFC7519</a></p>
+    
+        <pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnb0FjdGl2ZUNsaWVudFN1YnNjcmlwdGlvbnMiOlsiQWNjb3VudGluZyIsIlRpbWVUcmFja2luZyIsIlBheXJvbGwiLCJUcmF2ZWxFeHBlbnNlIiwiUXVhbGl0eSIsIkhvbGlkYXlBbmRMZWF2ZSJdLCJnb0NsaWVudElkIjoiYWEwYWU1YWEtY2NjZS00ZTMwLWFhNjMtMDY1ZTgyY2FkZWE0IiwiZ29DbGllbnROYW1lIjoiV0lERVLDmEUgQVMiLCJnb1VzZXJJZCI6IjU1ZDUxMGM3LWJkNWUtNDQ2OS04ODhlLTc2NDViMDg0ZGMzNiIsInJvbGUiOlsiQmFua0pvdXJuYWxWb3VjaGVyX0Z1bGwiLCJCYW5rVHJhbnNmZXJfRnVsbCIsIkJsb2JfRnVsbCIsIkJ1ZGdldF9GdWxsIiwiQ2FzaEpvdXJuYWxWb3VjaGVyX0Z1bGwiLCJDbGllbnRCYW5rQWNjb3VudF9GdWxsIiwiQ29tbW9uU2VydmljZXNfRnVsbCIsIkNvbnRhY3RHcm91cF9GdWxsIiwiQ3VzdG9tRGltZW5zaW9uRGVmaW5pdGlvbl9GdWxsIiwiQ3VzdG9tRGltZW5zaW9uVmFsdWVfRnVsbCIsIkN1c3RvbWVyX0Z1bGwiLCJEZWJ0Q29sbGVjdGlvbl9GdWxsIiwiRGVwYXJ0bWVudF9GdWxsIiwiRG9jdW1lbnRzX0Z1bGwiLCJFbXBsb3llZV9GdWxsIiwiRXhwZW5zZVZvdWNoZXJfRnVsbCIsIkV4dGVybmFsbHlEZWxpdmVyYWJsZUludm9pY2VfRnVsbCIsIkZhY3RvcmluZ19GdWxsIiwiRmluYW5jaW5nX0Z1bGwiLCJHZW5lcmFsTGVkZ2VyQWNjb3VudF9GdWxsIiwiSW1wb3J0X0Z1bGwiLCJJbmNvbWluZ0ludm9pY2VWb3VjaGVyX0Z1bGwiLCJJbnZvaWNlQXR0YWNobWVudF9GdWxsIiwiSm91cm5hbEVudHJ5Vm91Y2hlcl9GdWxsIiwiTG9jYXRpb25fRnVsbCIsIk1hbnVhbEpvdXJuYWxWb3VjaGVyX0Z1bGwiLCJPdXRnb2luZ0ludm9pY2VfRnVsbCIsIk91dGdvaW5nSW52b2ljZVZvdWNoZXJfRnVsbCIsIlBhcnR5QmFua0FjY291bnRfRnVsbCIsIlBhcnR5Q29udGFjdFBlcnNvbl9GdWxsIiwiUGF5cm9sbF9GdWxsIiwiUGF5cm9sbEpvdXJuYWxWb3VjaGVyX0Z1bGwiLCJQcm9kdWN0X0Z1bGwiLCJQcm9qZWN0X0Z1bGwiLCJRdWFsaXR5X0Z1bGwiLCJRdW90ZV9GdWxsIiwiUmVwb3J0aW5nX0FjY291bnRUcmFuc2FjdGlvbl9GdWxsIiwiUmVwb3J0aW5nX0N1c3RvbWVyTGVkZ2VyX0Z1bGwiLCJSZXBvcnRpbmdfSW52b2ljZUpvdXJuYWxfRnVsbCIsIlJlcG9ydGluZ19TdXBwbGllckxlZGdlcl9GdWxsIiwiUmVwb3J0aW5nX1RpbWVUcmFuc2FjdGlvbl9GdWxsIiwiUmVwb3J0aW5nX1RyaWFsQmFsYW5jZV9GdWxsIiwiUmVwb3J0aW5nX1VzYWdlX0Z1bGwiLCJTaGFyZWhvbGRlcl9GdWxsIiwiU3VwcGxpZXJfRnVsbCIsIlRpbWVUcmFja2luZ19GdWxsIiwiVUJPX0Z1bGwiLCJWb3VjaGVyRG9jdW1lbnRhdGlvbl9GdWxsIiwiWWVhckVuZEpvdXJuYWxWb3VjaGVyX0Z1bGwiXSwidW5pcXVlX25hbWUiOiI1NWQ1MTBjNy1iZDVlLTQ0NjktODg4ZS03NjQ1YjA4NGRjMzYiLCJuYmYiOjE3NjM5OTIzNDcsImV4cCI6MTc2Mzk5MzU0NywiaWF0IjoxNzYzOTkyMzQ3LCJpc3MiOiJodHRwczovL3Rlc3QtZ28tYXBwLWFwaXYyYXV0aG9yaXphdGlvbi1ldXJ3LmF6dXJld2Vic2l0ZXMubmV0LyIsImF1ZCI6Imh0dHBzOi8vdGVzdC1nby1hcHAtYXBpdjItZXVydy5henVyZXdlYnNpdGVzLm5ldC8ifQ.n8Ipte7rIQ3M9DtpzXjbEM-9KjqS9-l63gK4fdwvqws</code></pre>
+
+        <h3>- Access token time to live is expanded from 10 minutes (600 seconds) to 20 minutes (1200 seconds).</h3>
+
+        <h3>- Refresh token is obsolete.</h3>
+        <p>With the new access token format, refresh tokens are no longer necessary. Clients should request a new access token using the client credentials flow when the current token expires.</p>
+
+       <p>Passing empty strings may cause validation errors like with an error <i>field is required</i>. Mitigiate this by removing the parameter from the request.</p>
+       <h2>Empty string</h2>
+       <p>Passing empty strings may cause validation errors like with an error  <i>field is required</i>. Mitigiate this by removing the parameter from the request.</p>
+       <pre><code>/Reporting/CustomerBalance?toDate=2025-12-31
+        {
+        "data": {
+            "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+            "title": "One or more validation errors occurred.",
+            "status": 400,
+            "errors": {
+            "contactGroup": [
+                "The contactGroup field is required."
+            ]
+            },
+                "traceId": "00-63aa14de6f41faf5361bb676b0f72637-e4915696ccd8d029-01"
+            },
+        "success": true
+        }</code></pre>
+        <p>Decimals with the value 0.0 may now be returned as 0</p>
+        <h2>Number formatting</h2>
+        Decimals with the value 0.0 may now be returned as 0
+        
+      </div>
+
+      <h2>Contact</h2>
+      <p>If you have any questions or feedback in regards to the changes, please contact us at <a href="mailto:go-api@poweroffice.no">go-api@poweroffice.no</a>.</p>
+    </div>
+
+    <script>
+      // Dark mode functionality
+      function initDarkMode() {
+        const darkMode = localStorage.getItem('darkMode') === 'true';
+        if (darkMode) {
+          document.body.classList.add('dark-mode');
+          document.getElementById('sunIcon').style.display = 'block';
+          document.getElementById('moonIcon').style.display = 'none';
+        }
+
+        const toggle = document.getElementById('darkModeToggle');
+        if (toggle) {
+          toggle.addEventListener('click', function () {
+            const isDark = document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+            document.getElementById('sunIcon').style.display = isDark ? 'block' : 'none';
+            document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
+          });
+        }
+      }
+
+      // Initialize on page load
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initDarkMode);
+      } else {
+        initDarkMode();
+      }
+    </script>
+  </body>
+</html>
