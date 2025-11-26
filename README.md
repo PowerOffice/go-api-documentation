@@ -65,7 +65,7 @@ This job runs when code is pushed or a pull request is opened/updated:
    - Simplifies verbose .NET type names in the OpenAPI schemas
    - Removes unnecessary namespace and assembly information
    - Makes the API documentation more readable
-4. **Install Dependencies**: Runs `npm install` and `npm ci` to install all required packages
+4. **Install Dependencies**: Runs both `npm install` and `npm ci` sequentially to ensure all required packages are installed correctly
 5. **Build Application**: Executes `npm run build` to:
    - Compile the React application
    - Bundle assets using Vite
@@ -148,12 +148,14 @@ Manual deployments are not typically necessary, but if needed, ensure you have t
 
 This is an internal PowerOffice repository. When contributing:
 
-1. Create a feature branch from `dev`
+1. Create a feature branch from `main`
 2. Make your changes
 3. Test locally using `npm run dev`
 4. Create a pull request targeting `main`
 5. The GitHub Actions workflow will automatically build and create a preview deployment
-6. After review and approval, merge to deploy to production
+6. After review and approval, merge to `main` to deploy to production
+
+Note: Direct pushes to `dev` and `staging` branches will also trigger deployments to their respective environments.
 
 ## Support
 
