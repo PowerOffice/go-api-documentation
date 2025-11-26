@@ -2,19 +2,83 @@
    height: 100%;
  	margin: 0;
 	padding: 0;
+	transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
     font-family: "MuseoSans","Segoe UI",Arial,sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+}
+
+body.dark-mode {
+    background-color: #09090b;
+    color: #e4e4e7;
+}
+
+body.dark-mode .content {
+    color: #e4e4e7;
+}
+
+body.dark-mode pre {
+    background-color: #27272a !important;
+    color: #e4e4e7 !important;
+}
+
+body.dark-mode code {
+    background-color: #27272a !important;
+    color: #e4e4e7 !important;
+}
+
+body.dark-mode table {
+    border-color: #3f3f46 !important;
+    background-color: #18181b !important;
+}
+
+body.dark-mode th {
+    border-color: #3f3f46 !important;
+    background-color: #27272a !important;
+    color: #fafafa !important;
+    font-weight: 600;
+}
+
+body.dark-mode td {
+    border-color: #3f3f46 !important;
+    background-color: #18181b !important;
+    color: #e4e4e7 !important;
+}
+
+body.dark-mode tbody tr:hover td {
+    background-color: #27272a !important;
+}
+
+body.dark-mode a {
+    color: #fa903c;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: #e4e4e7;
 }
 
 #leftmenu {
 	position: fixed;
-	width: 250px;
+	width: 310px;
 	height: 100%;
 	overflow: scroll;
 	white-space: nowrap;
 	background-color: #f1f1f1;
+	transition: background-color 0.3s ease;
+	min-width: 200px;
+	max-width: 600px;
+}
+
+body.dark-mode #leftmenu {
+	background-color: #18181b;
 }
 
 #leftmenu::-webkit-scrollbar {
@@ -29,16 +93,91 @@ body {
 	background-color: #f1f1f1;    
 }
 
+#resize-handle {
+	position: fixed;
+	left: 310px;
+	top: 0;
+	width: 5px;
+	height: 100%;
+	cursor: col-resize;
+	background-color: transparent;
+	z-index: 1000;
+	transition: background-color 0.2s ease;
+}
+
+#resize-handle:hover,
+#resize-handle.dragging {
+	background-color: #ea802c;
+}
+
+body.dark-mode #resize-handle:hover,
+body.dark-mode #resize-handle.dragging {
+	background-color: #fa903c;
+}
+
 #splitter {
     width: 10px;
     height: 100%
 }
 
 .content {
-	margin-left: 250px;
+	margin-left: 310px;
 	overflow: auto;
 	padding-left: 20px;
 	padding-right: 20px;
+}
+
+.docs-logo {
+	padding: 15px;
+	background: white;
+	border-bottom: 1px solid #e1e1e1;
+	text-align: center;
+	position: relative;
+	transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode .docs-logo {
+	background: #27272a;
+	border-bottom: 1px solid #3f3f46;
+}
+
+.docs-logo img {
+	height: 35px;
+	object-fit: contain;
+}
+
+.dark-mode-toggle {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #666;
+	transition: all 0.3s ease;
+	border-radius: 8px;
+}
+
+.dark-mode-toggle:hover {
+	color: #ea802c;
+	background: #f8f9fa;
+}
+
+body.dark-mode .dark-mode-toggle {
+	color: #a1a1aa;
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+	color: #fa903c;
+	background: #18181b;
+}
+
+.dark-mode-toggle svg {
+	display: block;
 }
 
 .index ul.root {
@@ -60,10 +199,19 @@ body {
 	padding: 5px;
 	white-space: nowrap;	
 	color: black;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .index li a {
+	color: #e4e4e7;
 }
 
 .index li a:hover {
 	background-color: #e1e1e1;
+}
+
+body.dark-mode .index li a:hover {
+	background-color: #27272a;
 }
 
 .treemenu li { 
