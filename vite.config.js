@@ -16,7 +16,7 @@ const copyStaticFilesPlugin = () => ({
       join(process.cwd(), 'openapi', 'swagger.json'),
       join(openapiDestDir, 'swagger.json')
     )
-    console.log('✓ Copied swagger.jso to dist/openapi')
+    console.log('✓ Copied swagger.json to dist/openapi')
     
     // Copy docs folder
     const docsSource = join(process.cwd(), 'docs')
