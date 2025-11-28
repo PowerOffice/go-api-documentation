@@ -201,6 +201,91 @@
         margin: 2rem 0;
         border: 1px solid var(--border-color);
       }
+
+      /* Progress bar styles */
+      .rollout-progress {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: var(--bg-placeholder);
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+      }
+
+      .rollout-progress h3 {
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .rollout-progress h3 svg {
+        width: 20px;
+        height: 20px;
+        color: var(--accent);
+      }
+
+      .rollout-progress .progress-description {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+
+      .progress-bar-container {
+        background: var(--bg-code);
+        border-radius: 10px;
+        height: 24px;
+        overflow: hidden;
+        position: relative;
+        border: 1px solid var(--border-color);
+      }
+
+      .progress-bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), #ff8c5a);
+        border-radius: 10px;
+        transition: width 0.5s ease-in-out;
+        position: relative;
+      }
+
+      .progress-bar-fill::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.2) 50%,
+          transparent 100%
+        );
+        animation: shimmer 2s infinite;
+      }
+
+      @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+      }
+
+      .progress-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 0.75rem;
+        font-size: 0.9rem;
+      }
+
+      .progress-percentage {
+        font-weight: 600;
+        color: var(--accent);
+      }
+
+      .progress-status {
+        color: var(--text-muted);
+      }
     </style>
   </head>
   <body>
@@ -239,6 +324,25 @@
       <div class="alert">
         <h2>⚠️ Important Notice</h2>
         <p>This page contains critical information about backend changes that may affect your integration with the PowerOffice Go API. Please read carefully.</p>
+      </div>
+
+      <div class="rollout-progress">
+        <h3>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+          </svg>
+          Backend Upgrade Rollout Progress
+        </h3>
+        <p class="progress-description">
+          We are gradually rolling out the new .NET 8 backend to all clients. Below you can see the current rollout progression.
+        </p>
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="progressBarFill"></div>
+        </div>
+        <div class="progress-info">
+          <span class="progress-percentage" id="progressPercentage"></span>
+          <span class="progress-status" id="progressStatus"></span>
+        </div>
       </div>
 
       <div class="content">
@@ -334,6 +438,25 @@
     </div>
 
     <script>
+      // Rollout progress configuration - update this value to change the progress bar
+      const ROLLOUT_PROGRESS = {
+        percentage: 75,  // Change this value to update the rollout percentage (0-100)
+        status: 'Rollout in progress'  // Change this to update the status text
+      };
+
+      // Initialize rollout progress bar
+      function initRolloutProgress() {
+        const progressFill = document.getElementById('progressBarFill');
+        const progressPercentage = document.getElementById('progressPercentage');
+        const progressStatus = document.getElementById('progressStatus');
+
+        if (progressFill && progressPercentage && progressStatus) {
+          progressFill.style.width = ROLLOUT_PROGRESS.percentage + '%';
+          progressPercentage.textContent = ROLLOUT_PROGRESS.percentage + '% Complete';
+          progressStatus.textContent = ROLLOUT_PROGRESS.status;
+        }
+      }
+
       // Dark mode functionality
       function initDarkMode() {
         const darkMode = localStorage.getItem('darkMode') === 'true';
@@ -355,10 +478,15 @@
       }
 
       // Initialize on page load
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initDarkMode);
-      } else {
+      function init() {
         initDarkMode();
+        initRolloutProgress();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
       }
     </script>
   </body>
