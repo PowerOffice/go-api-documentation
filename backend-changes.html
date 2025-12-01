@@ -325,7 +325,7 @@
         <h2>⚠️ Important Notice</h2>
         <p>This page contains critical information about backend changes that may affect your integration with the PowerOffice Go API. Please read carefully.</p>
       </div>
-      <div>2025-12-01 09:00: Redirected traffic from old backend to new.</div>
+  
       <div class="rollout-progress">
         <h3>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -343,7 +343,11 @@
           <span class="progress-percentage" id="progressPercentage"></span>
           <span class="progress-status" id="progressStatus"></span>
         </div>
+        
+        <div>2025-12-01 10:45: Migrating first integrations to new authentication.</div>
+        <div>2025-12-01 09:00: Redirected traffic from old backend to new.</div>
       </div>
+     
 
       <div class="content">
         <h1>Backend Changes and Updates</h1>
@@ -440,7 +444,7 @@
     <script>
       // Rollout progress configuration - update this value to change the progress bar
       const ROLLOUT_PROGRESS = {
-        percentage: 5,  // Change this value to update the rollout percentage (0-100)
+        percentage: 10,  // Change this value to update the rollout percentage (0-100)
         status: 'Rollout in progress'  // Change this to update the status text
       };
 
