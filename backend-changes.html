@@ -344,6 +344,8 @@
           <span class="progress-status" id="progressStatus"></span>
         </div>
         
+        <div>2025-12-02 08:45: Migrate remaining integrations to new authentication.</div>
+        <div>2025-12-02 08:05: Reverted integration migration to resolve issues.</div>
         <div>2025-12-01 12:00: Migrating first integrations to new API backend.</div>
         <div>2025-12-01 10:45: Migrating first integrations to new authentication.</div>
         <div>2025-12-01 09:00: Redirected traffic from old backend to new.</div>
@@ -393,7 +395,7 @@
         <h3>TL;DR</h3>
         Access token has changed to JWT format, refresh tokens are obsolete, and request headers must be form-data or x-www-form-urlencoded.
 
-        <h2>Breaking Changes</h2>
+        <h2>Changes</h2>
         <p>Below are the key changes that may affect your integration:</p>
 
         <h2>Authentication</h2>
@@ -438,6 +440,9 @@
         <p>Decimals with the value 0.0 may now be returned as 0</p>
       </div>
 
+      <h2>SortOrder cannot be null</h2>
+      <p>SortOrder cannot be null.</p>
+
       <h2>Contact</h2>
       <p>If you have any questions or feedback in regards to the changes, please contact us at <a href="mailto:go-api@poweroffice.no">go-api@poweroffice.no</a>.</p>
     </div>
@@ -445,7 +450,7 @@
     <script>
       // Rollout progress configuration - update this value to change the progress bar
       const ROLLOUT_PROGRESS = {
-        percentage: 20,  // Change this value to update the rollout percentage (0-100)
+        percentage: 25,  // Change this value to update the rollout percentage (0-100)
         status: 'Rollout in progress'  // Change this to update the status text
       };
 
