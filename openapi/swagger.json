@@ -4,6 +4,16 @@
     "title": "Web.ExternalApiCore",
     "version": "1.0"
   },
+  "servers": [
+    {
+      "url": "https://api.poweroffice.net",
+      "description": "Production API"
+    },
+    {
+      "url": "https://api-demo.poweroffice.net",
+      "description": "Demo API"
+    }
+  ],
   "paths": {
     "/Reporting/AccountTransactions": {
       "get": {
