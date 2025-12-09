@@ -32,6 +32,9 @@ jobs:
         run: node ./openapi/SimplifySchemaNames.cjs ./openapi/swagger.json
       - name: Show simplified schemas
         run: git diff --name-only || true
+
+      - name: Generate OpenAPI Operation IDs
+        run: node generate_operation_ids.js
           
       - name: Install dependencies
         run: npm install
