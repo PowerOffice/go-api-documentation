@@ -38,6 +38,9 @@ jobs:
       
       - name: Install with ci
         run: npm ci
+        
+      - name: Generate OpenAPI Operation IDs
+        run: node ./openapi/generate_operation_ids.js
 
       - name: Build application
         run: npm run build
