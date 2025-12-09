@@ -128,7 +128,7 @@ function addOperationIds(swaggerFile) {
 }
 
 // Main execution
-const swaggerPath = path.join(__dirname, 'openapi', 'swagger.json');
+const swaggerPath = path.join(__dirname, 'swagger.json');
 
 if (!fs.existsSync(swaggerPath)) {
   console.error(`Error: ${swaggerPath} not found`);
