@@ -20850,7 +20850,7 @@
           "DebtCollection"
         ],
         "summary": "Gets all the matched items for each invoice where changes is newer than fromDateTime. \r\nThis will contain all voucher's sub ledger entries (i.e. Payments/Creditnotes) that have been matched with the invoice's sub ledger entry.",
-        "description": "\n\n**Required Privilege:** DebtCollection",
+        "description": "\n\n**Required Privilege:** DebtCollection,\n\nGetAllMatchedItems?fromDateTime={fromDateTime}",
         "parameters": [
           {
             "name": "fromDateTime",
@@ -71856,7 +71856,7 @@
           },
           "routeValues": {
             "type": "object",
-            "additionalProperties": {},
+            "additionalProperties": { },
             "nullable": true
           }
         },
@@ -78913,7 +78913,7 @@
           },
           "fields": {
             "type": "object",
-            "additionalProperties": {},
+            "additionalProperties": { },
             "nullable": true
           },
           "batchItemErrors": {
@@ -81759,7 +81759,7 @@
   },
   "security": [
     {
-      "bearerAuth": []
+      "bearerAuth": [ ]
     }
   ]
 }
