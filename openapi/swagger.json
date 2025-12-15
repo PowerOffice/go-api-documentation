@@ -4,6 +4,16 @@
     "title": "Web.ExternalApiCore",
     "version": "1.0"
   },
+  "servers": [
+    {
+      "url": "https://api.poweroffice.net",
+      "description": "Production API"
+    },
+    {
+      "url": "https://api-demo.poweroffice.net",
+      "description": "Demo API"
+    }
+  ],
   "paths": {
     "/Reporting/AccountTransactions": {
       "get": {
@@ -20840,7 +20850,7 @@
           "DebtCollection"
         ],
         "summary": "Gets all the matched items for each invoice where changes is newer than fromDateTime. \r\nThis will contain all voucher's sub ledger entries (i.e. Payments/Creditnotes) that have been matched with the invoice's sub ledger entry.",
-        "description": "getallmatchedItems?fromDateTime={fromDateTime}",
+        "description": "\n\n**Required Privilege:** DebtCollection,\n\nGetAllMatchedItems?fromDateTime={fromDateTime}",
         "parameters": [
           {
             "name": "fromDateTime",
