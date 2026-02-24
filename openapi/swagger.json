@@ -61555,6 +61555,7 @@
           },
           "name": {
             "type": "string",
+            "maxLength": 320,
             "nullable": true
           },
           "vatCode": {
