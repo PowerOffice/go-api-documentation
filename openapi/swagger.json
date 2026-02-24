@@ -4,16 +4,6 @@
     "title": "Web.ExternalApiCore",
     "version": "1.0"
   },
-  "servers": [
-    {
-      "url": "https://api.poweroffice.net",
-      "description": "Production API"
-    },
-    {
-      "url": "https://api-demo.poweroffice.net",
-      "description": "Demo API"
-    }
-  ],
   "paths": {
     "/Reporting/AccountTransactions": {
       "get": {
@@ -20850,7 +20840,7 @@
           "DebtCollection"
         ],
         "summary": "Gets all the matched items for each invoice where changes is newer than fromDateTime. \r\nThis will contain all voucher's sub ledger entries (i.e. Payments/Creditnotes) that have been matched with the invoice's sub ledger entry.",
-        "description": "\n\n**Required Privilege:** DebtCollection,\n\nGetAllMatchedItems?fromDateTime={fromDateTime}",
+        "description": "getallmatchedItems?fromDateTime={fromDateTime}",
         "parameters": [
           {
             "name": "fromDateTime",
@@ -61714,12 +61704,13 @@
       },
       "GoApi.AccountingSettings.SubledgerNumberSeriesType": {
         "enum": [
-          "None",
-          "Customer",
-          "Supplier",
-          "Employee"
+          0,
+          1,
+          2,
+          3
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Bank.BankTransfer": {
         "type": "object",
@@ -61844,13 +61835,14 @@
       },
       "GoApi.Bank.BankTransferStatus": {
         "enum": [
-          "AwaitingAuthorization",
-          "Authorized",
-          "Completed",
-          "Deleted",
-          "Failed"
+          0,
+          1,
+          2,
+          10,
+          99
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Bank.ClientBankAccount": {
         "type": "object",
@@ -62158,44 +62150,47 @@
       },
       "GoApi.Client.ContactPersonRole": {
         "enum": [
-          "None",
-          "Other",
-          "GeneralManager",
-          "ChairmanOfTheBoard",
-          "BoardMember"
+          0,
+          1,
+          2,
+          3,
+          4
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Client.Months": {
         "enum": [
-          "None",
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Client.VatPeriod": {
         "enum": [
-          "None",
-          "Weekly",
-          "HalfMonthly",
-          "Monthly",
-          "BiMonthly",
-          "Yearly",
-          "HalfYearly",
-          "Quarterly"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Common.Address": {
         "type": "object",
@@ -62248,80 +62243,85 @@
       },
       "GoApi.Common.DocumentMimeType": {
         "enum": [
-          "ApplicationOctetStream",
-          "TextXml",
-          "TextCsv",
-          "TextPlain",
-          "TextHtml",
-          "ApplicationPdf",
-          "ApplicationJson",
-          "ApplicationExcel",
-          "ImageTiff",
-          "ImagePng",
-          "ImageGif",
-          "ImageJpeg",
-          "ImageBmp",
-          "ImageUnknown",
-          "MultipartFormData",
-          "ApplicationXml",
-          "MultipartReport",
-          "ZipArchive",
-          "ApplicationJavascript",
-          "TextCss",
-          "TextMarkdown",
-          "ImageSvg",
-          "ApplicationXlsx",
-          "ApplicationDocx",
-          "ApplicationPptx",
-          "ApplicationOpenOfficeSpreadsheet",
-          "ApplicationOpenOfficePresentation",
-          "ApplicationOpenOfficeText",
-          "ApplicationDwg"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Common.ExternalInvoiceDeliveryType": {
         "enum": [
-          "Unspecified",
-          "Print",
-          "PdfByEmail",
-          "Ehf"
+          0,
+          1,
+          2,
+          3
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Common.Gender": {
         "enum": [
-          "Unspecified",
-          "Male",
-          "Female",
-          "Hidden"
+          0,
+          1,
+          2,
+          -1
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Common.InvoiceDeliveryType": {
         "enum": [
-          "None",
-          "PdfByEmail",
-          "Print",
-          "EHF",
-          "AvtaleGiro",
-          "External",
-          "Efaktura",
-          "Factoring"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Common.VatReturnSpecification": {
         "enum": [
-          "None",
-          "Adjustment",
-          "LossesOnClaims",
-          "ReversalOfInputValueAddedTax",
-          "Withdrawals",
-          "AdjustmentVatCompensationRealProperty",
-          "PurchasesEligibleForCompensation"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Common.VoucherDocument": {
         "type": "object",
@@ -62349,49 +62349,52 @@
       },
       "GoApi.Common.VoucherLineType": {
         "enum": [
-          "Normal",
-          "Text",
-          "Summary",
-          "InvoiceFee",
-          "Total",
-          "BasicTypeMask",
-          "TotalHours"
+          0,
+          1,
+          2,
+          3,
+          4,
+          65535,
+          65540
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Common.VoucherType": {
         "enum": [
-          "None",
-          "IncomingInvoice",
-          "IncomingCreditNote",
-          "OutgoingInvoice",
-          "OutgoingCreditNote",
-          "IncomingBankRemittance",
-          "IncomingOcrGiro",
-          "StartingBalance",
-          "ManualJournal",
-          "Expense",
-          "CashJournal",
-          "IncomingPayments",
-          "OutgoingPayments",
-          "YearEndJournal",
-          "BankJournal",
-          "VatReturns",
-          "PayrollJournal",
-          "OutgoingPaymentReminder",
-          "OutgoingNoticeOfDebtCollection",
-          "OutgoingPaymentDemand",
-          "OutgoingWarrantOfExecution",
-          "CorrectionVoucher",
-          "ReversalVoucher",
-          "BeginningBalance",
-          "DepreciationJournal",
-          "TravelExpense",
-          "Settlement",
-          "NegativeSettlement",
-          "SystemGeneratedDocumentationVoucher"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          8,
+          9,
+          10,
+          11,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          23,
+          71,
+          72,
+          73,
+          74,
+          98,
+          99,
+          100,
+          101,
+          120,
+          130,
+          131,
+          99999
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Currency.Currency": {
         "type": "object",
@@ -62477,10 +62480,11 @@
       },
       "GoApi.DebtCollection.DebtCollectionCaseStatus": {
         "enum": [
-          "Active",
-          "Closed"
+          0,
+          10
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.DebtCollection.DebtCollectionCaseWithMatches": {
         "type": "object",
@@ -63220,14 +63224,15 @@
       },
       "GoApi.Factoring.FactoringInvoiceStatus": {
         "enum": [
-          "Unspecified",
-          "Active",
-          "Forfeit",
-          "Complained",
-          "Completed",
-          "Delivered"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Factoring.FactoringInvoiceStatusRequest": {
         "type": "object",
@@ -63333,11 +63338,12 @@
       },
       "GoApi.Import.ImportFileType": {
         "enum": [
-          "StandardImportFile",
-          "InvoicePdfZipFile",
-          "NetsOcrFile"
+          1,
+          2,
+          3
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Import.ImportLine": {
         "type": "object",
@@ -63526,14 +63532,15 @@
       },
       "GoApi.Import.ImportType": {
         "enum": [
-          "None",
-          "OutgoingVoucher",
-          "Payroll",
-          "Cash",
-          "YearEnd",
-          "VoucherJournal"
+          0,
+          1,
+          3,
+          4,
+          5,
+          99
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Invoices.Accrual": {
         "type": "object",
@@ -63925,7 +63932,8 @@
             "items": {
               "$ref": "#/components/schemas/GoApi.Invoices.OutgoingInvoiceLine"
             },
-            "nullable": true
+            "nullable": true,
+            "readOnly": true
           },
           "documentNo": {
             "type": "string",
@@ -64457,13 +64465,14 @@
       },
       "GoApi.Invoices.OutgoingInvoiceStatus": {
         "enum": [
-          "Draft",
-          "Approved",
-          "Sent",
-          "Paid",
-          "Archived"
+          0,
+          1,
+          2,
+          3,
+          4
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Invoices.PaymentTerm": {
         "type": "object",
@@ -64637,7 +64646,8 @@
             "items": {
               "$ref": "#/components/schemas/GoApi.Invoices.OutgoingInvoiceLine"
             },
-            "nullable": true
+            "nullable": true,
+            "readOnly": true
           },
           "documentNo": {
             "type": "string",
@@ -65118,20 +65128,22 @@
       },
       "GoApi.Invoices.RecurringSendFrequencyUnit": {
         "enum": [
-          "Weekly",
-          "Monthly",
-          "Yearly",
-          "Daily"
+          0,
+          1,
+          2,
+          3
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Invoices.RecurringSendMethod": {
         "enum": [
-          "Confirm",
-          "Send",
-          "Draft"
+          0,
+          1,
+          2
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Invoices.SendInvoiceRequest": {
         "type": "object",
@@ -65234,15 +65246,16 @@
       },
       "GoApi.JournalEntry.JournalEntryFileType": {
         "enum": [
-          "None",
-          "Pdf",
-          "ImageJpeg",
-          "ImagePng",
-          "ImageTiff",
-          "ImageGif",
-          "ImageBmp"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.JournalEntry.JournalEntryVoucher": {
         "type": "object",
@@ -65480,16 +65493,17 @@
       },
       "GoApi.JournalEntry.JournalEntryVoucherType": {
         "enum": [
-          "None",
-          "SupplierInvoice",
-          "SupplierCreditNote",
-          "Expense",
-          "ManualJournal",
-          "CashJournal",
-          "BankJournal",
-          "YearEndJournal"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Party.ContactGroup": {
         "type": "object",
@@ -66472,61 +66486,62 @@
       },
       "GoApi.Payroll.PayItemProcessingType": {
         "enum": [
-          "FixedAmount",
-          "FixedAmountWithQuantity",
-          "FixedAmountWithQuantitySubjectToWithholdingTax",
-          "QuantityAndRate",
-          "QuantityAndRateSubjectToWithholdingTax",
-          "QuantityAndFixedRate",
-          "QuantityAndRateReportingZeroAsQuantity",
-          "QuantityAndFixedRateReportingZeroAsQuantity",
-          "FixedSalary",
-          "HourlyWage",
-          "PercentOfHourlyWage",
-          "HolidayPay",
-          "HolidayPayOver60Years",
-          "HolidayPayForSpecifiedYear",
-          "WageDeductionForHoliday",
-          "WageDeductionForHolidayOver60Years",
-          "HolidayPayCorrection",
-          "HolidayPayCorrectionOver60",
-          "ElectronicCommunications",
-          "ExpenseRefund",
-          "SalaryAdvance",
-          "FreeCarStandardRule",
-          "FreeCarOther",
-          "FreeCarOutsideStandardRule",
-          "WorkCarListPrice",
-          "WorkCarKilometers",
-          "DeductionWithBalance",
-          "BackPaymentOfPensionAndAnnuities",
-          "Lott",
-          "CommuterWithPersonTypeAndQuantity",
-          "CommuterWithPersonType",
-          "CommuterWithNumberOfJourneys",
-          "CommuterWithPersonTypeQuantityAndRate",
-          "HomeVisitsForCommuters",
-          "SeafarersAllowanceDaysAtSea",
-          "HolidayPayFinalSettlement",
-          "TradeUnionDeduction",
-          "PensionDeduction",
-          "PensionDeductionUnlimited",
-          "AttachmentOfEarnings",
-          "AttachmentOfEarningsNew",
-          "AttachmentOfEarningsTax",
-          "SeafarersAllowanceDeduction",
-          "PercentOfFixedSalary",
-          "DailyWageFiveDayWeek",
-          "DailyWageSixDayWeek",
-          "CorrectionOfAdditionalEmployersContribution",
-          "CorrectionOfEmployersContribution",
-          "CorrectionOfEmployersContributionAfterUsedFreeAmount",
-          "RetroactivePaymentFixedSalary",
-          "RetroactivePaymentHourlyRate",
-          "RetroactivePaymentOvertime",
-          "RetroactivePaymentDeductionForHoliday"
+          0,
+          5,
+          6,
+          10,
+          11,
+          12,
+          13,
+          14,
+          20,
+          30,
+          40,
+          50,
+          51,
+          52,
+          55,
+          56,
+          57,
+          58,
+          60,
+          80,
+          90,
+          100,
+          101,
+          102,
+          103,
+          104,
+          110,
+          120,
+          130,
+          140,
+          141,
+          142,
+          143,
+          144,
+          801,
+          900,
+          999,
+          1000,
+          1001,
+          1010,
+          1011,
+          1015,
+          1020,
+          1030,
+          1040,
+          1050,
+          2000,
+          2001,
+          2002,
+          2050,
+          2100,
+          2150,
+          2200
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Payroll.SalaryLine": {
         "type": "object",
@@ -66817,24 +66832,26 @@
       },
       "GoApi.Products.ProductInventoryEntryType": {
         "enum": [
-          "None",
-          "Sales",
-          "VoucherPostingService",
-          "StockTaking",
-          "Correction",
-          "Reversal",
-          "Deletion",
-          "Api"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Products.ProductType": {
         "enum": [
-          "None",
-          "Product",
-          "Service"
+          0,
+          1,
+          2
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Projects.Location": {
         "type": "object",
@@ -67108,14 +67125,15 @@
       },
       "GoApi.Projects.ProjectStatus": {
         "enum": [
-          "None",
-          "Tentative",
-          "Active",
-          "Archived",
-          "NotStarted",
-          "Complete"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Projects.ProjectTeamMember": {
         "type": "object",
@@ -67543,117 +67561,128 @@
       },
       "GoApi.Quality.AssignmentAgreementStatus": {
         "enum": [
-          "Draft",
-          "Active",
-          "Archived"
+          0,
+          20,
+          30
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Quality.AssignmentAuthorizationDocumentType": {
         "enum": [
-          "NotEvaluated",
-          "CertificateOfRegistration",
-          "PrintFromOtherRegistry",
-          "FoundingDocument",
-          "WrittenMandate",
-          "Other",
-          "ControlledByThirdParty"
+          0,
+          10,
+          20,
+          30,
+          40,
+          50,
+          60
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Quality.AssignmentCashRegisterDataAccessedViaType": {
         "enum": [
-          "None",
-          "Integration",
-          "FileImport",
-          "ManualBookkeeping"
+          0,
+          10,
+          20,
+          30
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Quality.AssignmentCompanyCredentialsType": {
         "enum": [
-          "NotControlled",
-          "CertificateOfRegistration",
-          "PrintFromEnhetsregisteret",
-          "PrintFromOtherRegistry",
-          "NotRegisteredInPublicRegistry",
-          "ControlledByThirdParty"
+          0,
+          10,
+          20,
+          30,
+          40,
+          50
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Quality.AssignmentOutgoingInvoicesReceivedByType": {
         "enum": [
-          "None",
-          "Integration",
-          "FileImport",
-          "ManualBookkeeping"
+          0,
+          10,
+          20,
+          30
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Quality.AssignmentProxyIdentificationType": {
         "enum": [
-          "NotControlled",
-          "DriversLicense",
-          "NorwegianCreditCard",
-          "ValidPassport",
-          "PostalServiceIdCard",
-          "DepartmentOfDefenseIdCard",
-          "NationalIdCardIssuedInEEA",
-          "CardForAsylumSeekerOrImmigrationPassport",
-          "ElectronicIDControl",
-          "ControlledByThirdParty"
+          0,
+          10,
+          20,
+          30,
+          40,
+          50,
+          60,
+          70,
+          80,
+          90
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Quality.AssignmentRiskLevel": {
         "enum": [
-          "NotEvaluated",
-          "Low",
-          "Medium",
-          "High"
+          0,
+          10,
+          20,
+          30
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Quality.DocumentEntityType": {
         "enum": [
-          "AssignmentAgreement",
-          "QualityTemplate",
-          "AssignmentAgreementLine",
-          "QualityTask"
+          5,
+          6,
+          7,
+          8
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Quality.DocumentSubContextType": {
         "enum": [
-          "None",
-          "AssignmentAgreementCustomerControl",
-          "AssignmentAgreementRisk",
-          "AssignmentAgreementPreviousAccountant",
-          "AssignmentAgreementDataAndSystems",
-          "AssignmentAgreementQualifications",
-          "AssignmentAgreementReconciliation"
+          0,
+          110,
+          120,
+          130,
+          140,
+          150,
+          200
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Quality.PreviousAccountantDemandsStatus": {
         "enum": [
-          "NotChecked",
-          "NoDemands",
-          "DemandsPendingPayment",
-          "DeviationNeedsToBeFixed",
-          "DisputeAboutDemandAcceptsAssignment",
-          "DisputeAboutDemandRejectsAssignment"
+          0,
+          10,
+          20,
+          30,
+          40,
+          50
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Quality.QualityAgreementSystemFolderType": {
         "enum": [
-          "None",
-          "TaskDocumentation",
-          "AssignmentDocumentation",
-          "AssignmentAgreement"
+          0,
+          10,
+          20,
+          30
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Quality.QualityDocumentMetaData": {
         "type": "object",
@@ -67940,7 +67969,8 @@
             "items": {
               "$ref": "#/components/schemas/GoApi.Invoices.OutgoingInvoiceLine"
             },
-            "nullable": true
+            "nullable": true,
+            "readOnly": true
           },
           "documentNo": {
             "type": "string",
@@ -68084,11 +68114,12 @@
       },
       "GoApi.Quotes.QuoteAcceptanceStatus": {
         "enum": [
-          "Pending",
-          "Accepted",
-          "Rejected"
+          0,
+          1,
+          2
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Quotes.QuoteListItem": {
         "type": "object",
@@ -68824,15 +68855,16 @@
       },
       "GoApi.Reporting.InvoiceJournal.InvoiceStatus": {
         "enum": [
-          "Unpaid",
-          "Paid",
-          "PaymentNotificationSent",
-          "PaymentReminderSent",
-          "NoticeOfDebtCollectionSent",
-          "PaymentDemandSent",
-          "WarrantOfExecutionSent"
+          0,
+          1,
+          10,
+          20,
+          30,
+          40,
+          50
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Reporting.Ledger.CustomerBalance": {
         "type": "object",
@@ -69357,16 +69389,17 @@
       },
       "GoApi.Reporting.TimeTransactions.TimeTrackingEntryStatusFlags": {
         "enum": [
-          "None",
-          "PendingApproval",
-          "Approved",
-          "SentToPayroll",
-          "Invoiced",
-          "Accrued",
-          "RunningTimer",
-          "IsHolidayLeave"
+          0,
+          1,
+          2,
+          4,
+          8,
+          16,
+          32,
+          256
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Reporting.TimeTransactions.TimeTransaction": {
         "type": "object",
@@ -69797,20 +69830,22 @@
       },
       "GoApi.SalesOrders.SalesOrderSendFrequencyUnit": {
         "enum": [
-          "Weekly",
-          "Monthly",
-          "Yearly",
-          "Daily"
+          0,
+          1,
+          2,
+          3
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.SalesOrders.SalesOrderSendMethod": {
         "enum": [
-          "Confirm",
-          "Send",
-          "Draft"
+          0,
+          1,
+          2
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.TimeTracking.Activity": {
         "type": "object",
@@ -70422,15 +70457,16 @@
       },
       "GoApi.Voucher.DocumentationFileType": {
         "enum": [
-          "None",
-          "Pdf",
-          "ImageJpeg",
-          "ImagePng",
-          "ImageTiff",
-          "ImageGif",
-          "ImageBmp"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "GoApi.Voucher.ExpenseVoucher": {
         "type": "object",
@@ -76944,59 +76980,63 @@
       },
       "Microsoft.OData.Edm.EdmContainerElementKind": {
         "enum": [
-          "None",
-          "EntitySet",
-          "ActionImport",
-          "FunctionImport",
-          "Singleton"
+          0,
+          1,
+          2,
+          3,
+          4
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "Microsoft.OData.Edm.EdmExpressionKind": {
         "enum": [
-          "None",
-          "BinaryConstant",
-          "BooleanConstant",
-          "DateTimeOffsetConstant",
-          "DecimalConstant",
-          "FloatingConstant",
-          "GuidConstant",
-          "IntegerConstant",
-          "StringConstant",
-          "DurationConstant",
-          "Null",
-          "Record",
-          "Collection",
-          "Path",
-          "If",
-          "Cast",
-          "IsOf",
-          "FunctionApplication",
-          "LabeledExpressionReference",
-          "Labeled",
-          "PropertyPath",
-          "NavigationPropertyPath",
-          "DateConstant",
-          "TimeOfDayConstant",
-          "EnumMember",
-          "AnnotationPath"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "Microsoft.OData.Edm.EdmOnDeleteAction": {
         "enum": [
-          "None",
-          "Cascade"
+          0,
+          1
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "Microsoft.OData.Edm.EdmPropertyKind": {
         "enum": [
-          "None",
-          "Structural",
-          "Navigation"
+          0,
+          1,
+          2
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "Microsoft.OData.Edm.EdmReferentialConstraintPropertyPair": {
         "type": "object",
@@ -77012,29 +77052,31 @@
       },
       "Microsoft.OData.Edm.EdmSchemaElementKind": {
         "enum": [
-          "None",
-          "TypeDefinition",
-          "Term",
-          "Action",
-          "EntityContainer",
-          "Function"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "Microsoft.OData.Edm.EdmTypeKind": {
         "enum": [
-          "None",
-          "Primitive",
-          "Entity",
-          "Complex",
-          "Collection",
-          "EntityReference",
-          "Enum",
-          "TypeDefinition",
-          "Untyped",
-          "Path"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "Microsoft.OData.Edm.IEdmEntityContainer": {
         "type": "object",
@@ -77500,13 +77542,14 @@
       },
       "Microsoft.OData.UriParser.Aggregation.TransformationNodeKind": {
         "enum": [
-          "Aggregate",
-          "GroupBy",
-          "Filter",
-          "Compute",
-          "Expand"
+          0,
+          1,
+          2,
+          3,
+          4
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "Microsoft.OData.UriParser.ComputeClause": {
         "type": "object",
@@ -77588,49 +77631,51 @@
       },
       "Microsoft.OData.UriParser.OrderByDirection": {
         "enum": [
-          "Ascending",
-          "Descending"
+          0,
+          1
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "Microsoft.OData.UriParser.QueryNodeKind": {
         "enum": [
-          "None",
-          "Constant",
-          "Convert",
-          "NonResourceRangeVariableReference",
-          "BinaryOperator",
-          "UnaryOperator",
-          "SingleValuePropertyAccess",
-          "CollectionPropertyAccess",
-          "SingleValueFunctionCall",
-          "Any",
-          "CollectionNavigationNode",
-          "SingleNavigationNode",
-          "SingleValueOpenPropertyAccess",
-          "SingleResourceCast",
-          "All",
-          "CollectionResourceCast",
-          "ResourceRangeVariableReference",
-          "SingleResourceFunctionCall",
-          "CollectionFunctionCall",
-          "CollectionResourceFunctionCall",
-          "NamedFunctionParameter",
-          "ParameterAlias",
-          "EntitySet",
-          "KeyLookup",
-          "SearchTerm",
-          "CollectionOpenPropertyAccess",
-          "CollectionComplexNode",
-          "SingleComplexNode",
-          "Count",
-          "SingleValueCast",
-          "CollectionPropertyNode",
-          "AggregatedCollectionPropertyNode",
-          "In",
-          "CollectionConstant"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "Microsoft.OData.UriParser.RangeVariable": {
         "type": "object",
@@ -79046,387 +79091,410 @@
       },
       "System.Net.Sockets.AddressFamily": {
         "enum": [
-          "Unspecified",
-          "Unix",
-          "InterNetwork",
-          "ImpLink",
-          "Pup",
-          "Chaos",
-          "NS",
-          "Iso",
-          "Ecma",
-          "DataKit",
-          "Ccitt",
-          "Sna",
-          "DecNet",
-          "DataLink",
-          "Lat",
-          "HyperChannel",
-          "AppleTalk",
-          "NetBios",
-          "VoiceView",
-          "FireFox",
-          "Banyan",
-          "Atm",
-          "InterNetworkV6",
-          "Cluster",
-          "Ieee12844",
-          "Irda",
-          "NetworkDesigners",
-          "Max",
-          "Packet",
-          "ControllerAreaNetwork",
-          "Unknown"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          28,
+          29,
+          65536,
+          65537,
+          -1
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "System.Nullable`1[[GoApi.Bank.CurrencyRegistryCodes, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "None",
-          "PurchaseOfGoods",
-          "LeaseOfServices",
-          "OtherPurchaseOrSaleOfServices",
-          "Interests",
-          "Dividends",
-          "OtherReturnOnCapital",
-          "PurchaseOrSaleOfProperty",
-          "InvestmentInSharesAndMore",
-          "InvestmentInOtherCapital",
-          "PortfolioInvestmentInSharesAndMutualFundsShares",
-          "PortfolioInvestmentInBondsAndNotes",
-          "PortfolioInvestmentInDerivatives",
-          "LifeInsurancePension",
-          "OtherFinancialInvestments",
-          "Salaries",
-          "InheritanceGiftsAndMore",
+          0,
+          14,
+          26,
+          29,
+          31,
+          35,
+          38,
+          41,
+          43,
+          45,
+          51,
+          52,
+          53,
+          71,
+          79,
+          81,
+          82,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.Bank.InternationalPaymentFeeDistribution, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "Shared",
-          "Sender",
-          "Receiver",
+          0,
+          1,
+          2,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.Common.AgricultureDepartment, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "None",
-          "Finance",
-          "Farming",
-          "Forestry",
-          "FurAnimals",
-          "OtherIndustries",
-          "Private",
+          0,
+          10,
+          20,
+          30,
+          50,
+          60,
+          90,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.Common.Gender, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "Unspecified",
-          "Male",
-          "Female",
-          "Hidden",
+          0,
+          1,
+          2,
+          -1,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.Common.InvoiceDeliveryType, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "None",
-          "PdfByEmail",
-          "Print",
-          "EHF",
-          "AvtaleGiro",
-          "External",
-          "Efaktura",
-          "Factoring",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.Common.UnitOfMeasureCode, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "BX",
-          "MTR",
-          "KMT",
-          "KGM",
-          "EA",
-          "LTR",
-          "HUR",
-          "DAY",
-          "MTK",
-          "MTQ",
-          "TNE",
-          "MON",
-          "ANN",
-          "QAN",
-          "NL",
-          "XRO",
-          "XBA",
-          "XPL",
-          "XPC",
-          "PR",
-          "XCI",
-          "XBG",
-          "SET",
-          "XTY",
-          "XOF",
-          "FTK",
-          "KWH",
-          "MWH",
-          "LBR",
-          "CMT",
-          "DMT",
-          "LM",
-          "XPK",
-          "GRM",
-          "HGM",
-          "XFL",
-          "XBE",
-          "E54",
-          "MMT",
-          "DAA",
-          "H18",
-          "MLT",
-          "HLT",
-          "DLT",
-          "AK",
-          "XCR",
-          "E14",
-          "MJ",
-          "J57",
-          "XJG",
-          "XCT",
-          "XSA",
-          "XTU",
-          "WEE",
-          "XCA",
-          "XCN",
-          "NAR",
-          "M4",
-          "XVQ",
-          "P1",
-          "MFU",
-          "KMK",
-          "LM3",
-          "FM3",
-          "FOT",
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.Common.VatReturnSpecification, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "None",
-          "Adjustment",
-          "LossesOnClaims",
-          "ReversalOfInputValueAddedTax",
-          "Withdrawals",
-          "AdjustmentVatCompensationRealProperty",
-          "PurchasesEligibleForCompensation",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.Common.VoucherType, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "None",
-          "IncomingInvoice",
-          "IncomingCreditNote",
-          "OutgoingInvoice",
-          "OutgoingCreditNote",
-          "IncomingBankRemittance",
-          "IncomingOcrGiro",
-          "StartingBalance",
-          "ManualJournal",
-          "Expense",
-          "CashJournal",
-          "IncomingPayments",
-          "OutgoingPayments",
-          "YearEndJournal",
-          "BankJournal",
-          "VatReturns",
-          "PayrollJournal",
-          "OutgoingPaymentReminder",
-          "OutgoingNoticeOfDebtCollection",
-          "OutgoingPaymentDemand",
-          "OutgoingWarrantOfExecution",
-          "CorrectionVoucher",
-          "ReversalVoucher",
-          "BeginningBalance",
-          "DepreciationJournal",
-          "TravelExpense",
-          "Settlement",
-          "NegativeSettlement",
-          "SystemGeneratedDocumentationVoucher",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          8,
+          9,
+          10,
+          11,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          23,
+          71,
+          72,
+          73,
+          74,
+          98,
+          99,
+          100,
+          101,
+          120,
+          130,
+          131,
+          99999,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.Factoring.FactoringInvoiceStatus, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "Unspecified",
-          "Active",
-          "Forfeit",
-          "Complained",
-          "Completed",
-          "Delivered",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.Invoices.DebtCollectionCaseStatus, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "Active",
-          "Closed",
+          0,
+          10,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.Invoices.DebtCollectionStatus, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "None",
-          "Draft",
-          "OnHold",
-          "Approved",
-          "Exported",
-          "Rejected",
+          0,
+          1,
+          2,
+          3,
+          4,
+          10,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.Invoices.SendInvoiceDeliveryType, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "PdfByEmail",
-          "EHF",
-          "AvtaleGiro",
-          "Efaktura",
+          1,
+          2,
+          3,
+          4,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.Payroll.InternationalIdType, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "None",
-          "PassportNumber",
-          "NationalIdentityNumber",
-          "TaxIdentificationNumber",
-          "ValueAddedTaxIdentificationNumber",
+          0,
+          1,
+          2,
+          3,
+          4,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.Projects.HourlyRateSpecification, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "None",
-          "Activity",
-          "Employee",
-          "Project",
+          0,
+          1,
+          2,
+          3,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.Projects.ProjectBillingMethod, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "None",
-          "TimeAndExpenses",
-          "FixedPrice",
-          "Time",
+          0,
+          1,
+          2,
+          3,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.Quality.QuestionnaireAnswer, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "NotSure",
-          "No",
-          "Yes",
+          0,
+          10,
+          20,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.Quality.SigningStatus, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "None",
-          "Pending",
-          "Rejected",
-          "Completed",
-          "Expired",
-          "Canceled",
+          0,
+          10,
+          20,
+          30,
+          40,
+          100,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.Quotes.QuoteAcceptanceStatus, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "Pending",
-          "Accepted",
-          "Rejected",
+          0,
+          1,
+          2,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.Reporting.TimeTransactions.ProjectBillingMethod, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "None",
-          "TimeAndExpenses",
-          "FixedPrice",
-          "Time",
+          0,
+          1,
+          2,
+          3,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.Reporting.TimeTransactions.TimeApprovalStatus, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "Draft",
-          "Submitted",
-          "Approved",
-          "Rejected",
+          0,
+          1,
+          2,
+          3,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.Nullable`1[[GoApi.TimeTracking.ActivityType, GoApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "enum": [
-          "None",
-          "Billable",
-          "NonBillable",
-          "Internal",
-          "PaidSickLeave",
-          "PaidSickLeaveWithSickNote",
-          "PaidSickLeaveForSickChildren",
-          "UnpaidSickLeave",
-          "PaidLeave",
-          "UnpaidLeave",
-          "Vacation",
+          0,
+          100,
+          200,
+          250,
+          300,
+          301,
+          302,
+          400,
+          500,
+          600,
+          700,
           null
         ],
-        "type": "string",
+        "type": "integer",
+        "format": "int32",
         "nullable": true
       },
       "System.ReadOnlyMemory`1[[System.Byte, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
@@ -79564,13 +79632,14 @@
       },
       "System.Reflection.CallingConventions": {
         "enum": [
-          "Standard",
-          "VarArgs",
-          "Any",
-          "HasThis",
-          "ExplicitThis"
+          1,
+          2,
+          3,
+          32,
+          64
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "System.Reflection.ConstructorInfo": {
         "type": "object",
@@ -79767,11 +79836,12 @@
       },
       "System.Reflection.EventAttributes": {
         "enum": [
-          "None",
-          "SpecialName",
-          "RTSpecialName"
+          0,
+          512,
+          1024
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "System.Reflection.EventInfo": {
         "type": "object",
@@ -79838,27 +79908,28 @@
       },
       "System.Reflection.FieldAttributes": {
         "enum": [
-          "PrivateScope",
-          "Private",
-          "FamANDAssem",
-          "Assembly",
-          "Family",
-          "FamORAssem",
-          "Public",
-          "FieldAccessMask",
-          "Static",
-          "InitOnly",
-          "Literal",
-          "NotSerialized",
-          "HasFieldRVA",
-          "SpecialName",
-          "RTSpecialName",
-          "HasFieldMarshal",
-          "PinvokeImpl",
-          "HasDefault",
-          "ReservedMask"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          16,
+          32,
+          64,
+          128,
+          256,
+          512,
+          1024,
+          4096,
+          8192,
+          32768,
+          38144
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "System.Reflection.FieldInfo": {
         "type": "object",
@@ -79972,16 +80043,17 @@
       },
       "System.Reflection.GenericParameterAttributes": {
         "enum": [
-          "None",
-          "Covariant",
-          "Contravariant",
-          "VarianceMask",
-          "ReferenceTypeConstraint",
-          "NotNullableValueTypeConstraint",
-          "DefaultConstructorConstraint",
-          "SpecialConstraintMask"
+          0,
+          1,
+          2,
+          3,
+          4,
+          8,
+          16,
+          28
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "System.Reflection.ICustomAttributeProvider": {
         "type": "object",
@@ -80029,44 +80101,46 @@
       },
       "System.Reflection.MemberTypes": {
         "enum": [
-          "Constructor",
-          "Event",
-          "Field",
-          "Method",
-          "Property",
-          "TypeInfo",
-          "Custom",
-          "NestedType",
-          "All"
+          1,
+          2,
+          4,
+          8,
+          16,
+          32,
+          64,
+          128,
+          191
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "System.Reflection.MethodAttributes": {
         "enum": [
-          "PrivateScope",
-          "Private",
-          "FamANDAssem",
-          "Assembly",
-          "Family",
-          "FamORAssem",
-          "Public",
-          "MemberAccessMask",
-          "UnmanagedExport",
-          "Static",
-          "Final",
-          "Virtual",
-          "HideBySig",
-          "NewSlot",
-          "CheckAccessOnOverride",
-          "Abstract",
-          "SpecialName",
-          "RTSpecialName",
-          "PinvokeImpl",
-          "HasSecurity",
-          "RequireSecObject",
-          "ReservedMask"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          16,
+          32,
+          64,
+          128,
+          256,
+          512,
+          1024,
+          2048,
+          4096,
+          8192,
+          16384,
+          32768,
+          53248
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "System.Reflection.MethodBase": {
         "type": "object",
@@ -80202,22 +80276,23 @@
       },
       "System.Reflection.MethodImplAttributes": {
         "enum": [
-          "IL",
-          "Native",
-          "OPTIL",
-          "CodeTypeMask",
-          "ManagedMask",
-          "NoInlining",
-          "ForwardRef",
-          "Synchronized",
-          "NoOptimization",
-          "PreserveSig",
-          "AggressiveInlining",
-          "AggressiveOptimization",
-          "InternalCall",
-          "MaxMethodImplVal"
+          0,
+          1,
+          2,
+          3,
+          4,
+          8,
+          16,
+          32,
+          64,
+          128,
+          256,
+          512,
+          4096,
+          65535
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "System.Reflection.MethodInfo": {
         "type": "object",
@@ -80412,19 +80487,20 @@
       },
       "System.Reflection.ParameterAttributes": {
         "enum": [
-          "None",
-          "In",
-          "Out",
-          "Lcid",
-          "Retval",
-          "Optional",
-          "HasDefault",
-          "HasFieldMarshal",
-          "Reserved3",
-          "Reserved4",
-          "ReservedMask"
+          0,
+          1,
+          2,
+          4,
+          8,
+          16,
+          4096,
+          8192,
+          16384,
+          32768,
+          61440
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "System.Reflection.ParameterInfo": {
         "type": "object",
@@ -80498,16 +80574,17 @@
       },
       "System.Reflection.PropertyAttributes": {
         "enum": [
-          "None",
-          "SpecialName",
-          "RTSpecialName",
-          "HasDefault",
-          "Reserved2",
-          "Reserved3",
-          "Reserved4",
-          "ReservedMask"
+          0,
+          512,
+          1024,
+          4096,
+          8192,
+          16384,
+          32768,
+          62464
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "System.Reflection.PropertyInfo": {
         "type": "object",
@@ -80575,34 +80652,35 @@
       },
       "System.Reflection.TypeAttributes": {
         "enum": [
-          "NotPublic",
-          "Public",
-          "NestedPublic",
-          "NestedPrivate",
-          "NestedFamily",
-          "NestedAssembly",
-          "NestedFamANDAssem",
-          "VisibilityMask",
-          "SequentialLayout",
-          "ExplicitLayout",
-          "LayoutMask",
-          "Interface",
-          "Abstract",
-          "Sealed",
-          "SpecialName",
-          "RTSpecialName",
-          "Import",
-          "Serializable",
-          "WindowsRuntime",
-          "UnicodeClass",
-          "AutoClass",
-          "StringFormatMask",
-          "HasSecurity",
-          "ReservedMask",
-          "BeforeFieldInit",
-          "CustomFormatMask"
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          16,
+          24,
+          32,
+          128,
+          256,
+          1024,
+          2048,
+          4096,
+          8192,
+          16384,
+          65536,
+          131072,
+          196608,
+          262144,
+          264192,
+          1048576,
+          12582912
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "System.Reflection.TypeInfo": {
         "type": "object",
@@ -80979,11 +81057,12 @@
       },
       "System.Runtime.InteropServices.LayoutKind": {
         "enum": [
-          "Sequential",
-          "Explicit",
-          "Auto"
+          0,
+          2,
+          3
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "System.Runtime.InteropServices.StructLayoutAttribute": {
         "type": "object",
@@ -81380,11 +81459,12 @@
       },
       "System.Security.SecurityRuleSet": {
         "enum": [
-          "None",
-          "Level1",
-          "Level2"
+          0,
+          1,
+          2
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "System.Threading.CancellationToken": {
         "type": "object",
