@@ -29,7 +29,7 @@ IsQuantity2Required|boolean|Gets or sets a value indicating whether quantity is 
 IsQuantityRequired|boolean|Gets or sets a value indicating whether quantity is required when posting an accounting entry on this account.
 IsVatCodeLockedAfterPosting|boolean|Gets or sets a value indicating whether vat code is locked after posting an accounting entry to this account.
 LastChanged|Date|Gets the last changed date.
-Name|string|Gets or sets the name. Required property when creating new general ledger accounts.
+Name|string|Gets or sets the name. Required property when creating new general ledger accounts. (Max length 320).
 ProjectCode|string|Gets or sets the code of the [Project](Type_Project.md) associated with this account.
 Unit1|[UnitOfMeasureCode](Type_UnitOfMeasureCode.md)|Gets or sets the primary unit of measure ( [UnitOfMeasureCode](Type_UnitOfMeasureCode.md) ). This is an Oasis compatible unit-of-measure code that is only used on agriculture clients.         If the unit of measure was saved using GoApi.AccountingSettings.GeneralLedgerAccount.Unit1 , and the value is not compatible with this enum,         this property will be NULL and the original unit string will be present in GoApi.AccountingSettings.GeneralLedgerAccount.Unit1 .
 Unit2|[UnitOfMeasureCode](Type_UnitOfMeasureCode.md)|Gets or sets the secondary unit of measure ( [UnitOfMeasureCode](Type_UnitOfMeasureCode.md) ). This is an Oasis compatible unit-of-measure code that is only used on agriculture clients.         If the unit of measure was saved using GoApi.AccountingSettings.GeneralLedgerAccount.Unit2 , and the value is not compatible with this enum,         this property will be NULL and the original unit string will be present in GoApi.AccountingSettings.GeneralLedgerAccount.Unit2 .
