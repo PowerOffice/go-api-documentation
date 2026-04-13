@@ -382,7 +382,7 @@
 
         <h3>SDK</h3>
         <p>
-          A new version of the PowerOffice Go SDK is being prepared to support these backend changes. While the upgrade should be backward compatible, we recommend using the latest SDK version to take full advantage of the improvements and ensure compatibility with the updated backend.
+          A new version (3.0.0) has been released as of 2026-04-13.
         </p>
 
         <h3>⚠️ Important: Temporary Exclusion Available</h3>
@@ -422,6 +422,34 @@
         <h3>- Refresh token is obsolete.</h3>
         <p>With the new access token format, refresh tokens are no longer necessary. Clients should request a new access token using the client credentials flow when the current token expires.</p>
 
+        <h3>- Validation on endpoint access</h3>
+        <h2>Client does not have valid PowerOffice Go subscription</h2>
+        <p>Some endpoints, e.g. "TimeTracking", requires a subscription to PowerOffice Go module, e.g. "Time". If these requirements are not met, a Http error 403 unauthorized will be returned.
+          It is possible to read this information from the access token by decoding it in a JWT tool.
+          Below is an example client that does not have a valid Time-subscription, and therefor the TimeTracking privileges are invalid, even though the integration has them.
+          <pre><code>
+            {
+              "goActiveClientSubscriptions": [
+                "Accounting",
+                "Payroll",
+                "Quality"
+              ],
+              "goClientId": "CLIENTID",
+              "goClientName": "Klienten AS",
+              "goInvalidPrivileges": [
+                "Reporting_TimeTransaction_Full",
+                "TimeTracking_Full"
+              ],
+              "goUserId": "15faba1f-366b-4428-a72b-e10df7eeb998",
+              "role": [
+                "BankJournalVoucher_Full",
+                "BankTransfer_Full",
+                "Blob_Full"
+              ]
+            }
+          </code></pre>
+      </p>
+        
        <p>Passing empty strings may cause validation errors like with an error <i>field is required</i>. Mitigate this by removing the parameter from the request.</p>
        <h2>Empty string</h2>
        <p>Passing empty strings may cause validation errors like with an error  <i>field is required</i>. Mitigate this by removing the parameter from the request.</p>
