@@ -422,8 +422,8 @@
         <h3>- Refresh token is obsolete.</h3>
         <p>With the new access token format, refresh tokens are no longer necessary. Clients should request a new access token using the client credentials flow when the current token expires.</p>
 
-        <h3>- Validation on endpoint access</h3>
-        <h2>Client does not have valid PowerOffice Go subscription</h2>
+        <h2>- Validation on endpoint access</h2>
+        <h3>Client does not have valid PowerOffice Go subscription</h3>
         <p>Some endpoints, e.g. "TimeTracking", requires a subscription to PowerOffice Go module, e.g. "Time". If these requirements are not met, a Http error 403 unauthorized will be returned.
           It is possible to read this information from the access token by decoding it in a JWT tool.
           Below is an example client that does not have a valid Time-subscription, and therefor the TimeTracking privileges are invalid, even though the integration has them.
