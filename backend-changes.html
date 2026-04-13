@@ -343,7 +343,8 @@
           <span class="progress-percentage" id="progressPercentage"></span>
           <span class="progress-status" id="progressStatus"></span>
         </div>
-
+        <div>2026-04-13 11:00: All clients are migrated to the new backend. We are monitoring for unexpected events, but everything looks good.</div>
+        <div>2026-03-10 12:00: Rollout is currently in progress for selected partners.</div>
         <div>2026-02-13 12:00: We are aware of an issue where properties are set to their default value. This causes errors when updating object. Fix is expected February 18th</div>
         <div>2025-12-16 09:00: Migration halted. Updated json serialization framework causes breaking chaange.</div>
         <div>2025-12-04 12:00: Migration paused while we address reported issues.</div>
@@ -453,8 +454,8 @@
     <script>
       // Rollout progress configuration - update this value to change the progress bar
       const ROLLOUT_PROGRESS = {
-        percentage: 0,  // Change this value to update the rollout percentage (0-100)
-        status: 'Rollout ON PAUSE'  // Change this to update the status text
+        percentage: 100,  // Change this value to update the rollout percentage (0-100)
+        status: 'Rollout COMPLETE'  // Change this to update the status text
       };
 
       // Initialize rollout progress bar
