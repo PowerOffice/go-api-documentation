@@ -427,28 +427,28 @@
         <p>Some endpoints, e.g. "TimeTracking", requires a subscription to PowerOffice Go module, e.g. "Time". If these requirements are not met, a Http error 403 unauthorized will be returned.
           It is possible to read this information from the access token by decoding it in a JWT tool.
           Below is an example client that does not have a valid Time-subscription, and therefor the TimeTracking privileges are invalid, even though the integration has them.
-          <pre><code>
-            {
-              "goActiveClientSubscriptions": [
-                "Accounting",
-                "Payroll",
-                "Quality"
-              ],
-              "goClientId": "CLIENTID",
-              "goClientName": "Klienten AS",
-              "goInvalidPrivileges": [
-                "Reporting_TimeTransaction_Full",
-                "TimeTracking_Full"
-              ],
-              "goUserId": "15faba1f-366b-4428-a72b-e10df7eeb998",
-              "role": [
-                "BankJournalVoucher_Full",
-                "BankTransfer_Full",
-                "Blob_Full"
-              ]
-            }
-          </code></pre>
-      </p>
+<pre><code>
+  {
+    "goActiveClientSubscriptions": [
+      "Accounting",
+      "Payroll",
+      "Quality"
+    ],
+    "goClientId": "CLIENTID",
+    "goClientName": "Klienten AS",
+    "goInvalidPrivileges": [
+      "Reporting_TimeTransaction_Full",
+      "TimeTracking_Full"
+    ],
+    "goUserId": "15faba1f-366b-4428-a72b-e10df7eeb998",
+    "role": [
+      "BankJournalVoucher_Full",
+      "BankTransfer_Full",
+      "Blob_Full"
+    ]
+  }
+</code></pre>
+</p>
         
        <p>Passing empty strings may cause validation errors like with an error <i>field is required</i>. Mitigate this by removing the parameter from the request.</p>
        <h2>Empty string</h2>
