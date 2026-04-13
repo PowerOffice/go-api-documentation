@@ -12,8 +12,8 @@ const BackendChangesNotice = () => {
         <div className="notice-content">
           <h2>Important Changes</h2>
           <p>
-            MIGRATION COMPLETE!
-            ----
+            MIGRATION COMPLETE!<br>
+            ---- <br>
             We have important updates regarding our backend that may include breaking changes. 
             Please review this information before continuing with your integration.
           </p>
