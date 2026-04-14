@@ -8,6 +8,8 @@ This can happen because the access token now includes subscription-based validat
 
 If you encounter this issue, decode the JWT access token and check whether the `goInvalidPrivileges` field contains the endpoint privilege you are trying to use. You should also verify that the client has an active subscription for the required module in PowerOffice Go.
 
+**This is expected behavior, and not an error on our end.**
+
 ### Example
 
 A client without a valid Time subscription may see privileges such as `Reporting_TimeTransaction_Full` and `TimeTracking_Full` listed in `goInvalidPrivileges`. In that case, requests to TimeTracking-related endpoints will be rejected until the required subscription is enabled for the client.
