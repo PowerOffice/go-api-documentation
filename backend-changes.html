@@ -334,7 +334,7 @@
           Backend Upgrade Rollout Progress
         </h3>
         <p class="progress-description">
-         Rollout is currently halted. New json serialization framework has caused breaking changes that need to be addressed.
+         Rollout is complete as of 2026-04-13. All clients have been migrated to the new backend. We are monitoring the system closely to ensure stability and performance.
         </p>
         <div class="progress-bar-container">
           <div class="progress-bar-fill" id="progressBarFill"></div>
@@ -382,24 +382,10 @@
 
         <h3>SDK</h3>
         <p>
-          A new version of the PowerOffice Go SDK is being prepared to support these backend changes. While the upgrade should be backward compatible, we recommend using the latest SDK version to take full advantage of the improvements and ensure compatibility with the updated backend.
+          A new version (3.0.0) has been released as of 2026-04-13.
         </p>
 
-        <h3>⚠️ Important: Temporary Exclusion Available</h3>
-        <p>
-          If you need more time to adapt your integration, <strong>we have tools available to temporarily exclude your application 
-          from this upgrade</strong>. However, please note that this is a temporary measure only.
-        </p>
-        <p>
-          <strong>Everyone MUST eventually migrate to the new backend.</strong> Failure to do so will result in your integration 
-          ceasing to function when the old backend is decommissioned. We strongly encourage you to plan your migration as soon 
-          as possible to avoid any service interruptions.
-        </p>
-
-        <h3>TL;DR</h3>
-        Access token has changed to JWT format, refresh tokens are obsolete, and request headers must be form-data or x-www-form-urlencoded.
-
-        <h2>Changes</h2>
+        <h1>Changes</h1>
         <p>Below are the key changes that may affect your integration:</p>
 
         <h2>Authentication</h2>
@@ -422,6 +408,34 @@
         <h3>- Refresh token is obsolete.</h3>
         <p>With the new access token format, refresh tokens are no longer necessary. Clients should request a new access token using the client credentials flow when the current token expires.</p>
 
+        <h2>- Validation on endpoint access</h2>
+        <h3>Client does not have valid PowerOffice Go subscription</h3>
+        <p>Some endpoints, e.g. "TimeTracking", require a subscription to a PowerOffice Go module, e.g. "Time". If these requirements are not met, an HTTP 403 Forbidden error will be returned.
+          It is possible to read this information from the access token by decoding it in a JWT tool.
+          Below is an example of a client that does not have a valid Time subscription, and therefore the TimeTracking privileges are invalid even though the integration has them.
+<pre><code>Example JWT token content
+  {
+    "goActiveClientSubscriptions": [
+      "Accounting",
+      "Payroll",
+      "Quality"
+    ],
+    "goClientId": "CLIENTID",
+    "goClientName": "Klienten AS",
+    "goInvalidPrivileges": [
+      "Reporting_TimeTransaction_Full",
+      "TimeTracking_Full"
+    ],
+    "goUserId": "15faba1f-366b-4428-a72b-e10df7eeb998",
+    "role": [
+      "BankJournalVoucher_Full",
+      "BankTransfer_Full",
+      "Blob_Full"
+    ]
+  }
+</code></pre>
+</p>
+        
        <p>Passing empty strings may cause validation errors like with an error <i>field is required</i>. Mitigate this by removing the parameter from the request.</p>
        <h2>Empty string</h2>
        <p>Passing empty strings may cause validation errors like with an error  <i>field is required</i>. Mitigate this by removing the parameter from the request.</p>

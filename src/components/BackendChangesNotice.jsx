@@ -11,8 +11,9 @@ const BackendChangesNotice = () => {
         </div>
         <div className="notice-content">
           <h2>Important Changes</h2>
-          <p>
-            We have important updates regarding our backend that may include breaking changes. 
+          <p>MIGRATION COMPLETE!</p>
+          <p>        
+            We have important updates regarding our backend that may include breaking changes.
             Please review this information before continuing with your integration.
           </p>
           <a href="/backend-changes.html" className="notice-button">

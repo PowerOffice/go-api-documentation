@@ -26,7 +26,8 @@ const ResourceCards = () => {
       title: 'Support',
       links: [
         { text: 'Issue Tracker', href: 'https://github.com/PowerOffice/go-api/issues', external: true },
-        { text: 'Contact Us', href: 'mailto:go-api@poweroffice.no', external: true }
+        { text: 'Contact Us', href: 'mailto:go-api@poweroffice.no', external: true },
+        { text: 'Known issues', href: '/docs/index.html#Common/knownissues.md' }
       ]
     }
   ];
