@@ -59,7 +59,7 @@ The workflow consists of two main jobs:
 This job runs when code is pushed or a pull request is opened/updated:
 
 1. **Checkout Code**: Retrieves the repository code including submodules
-2. **Setup Node.js**: Installs Node.js 18 with npm caching for faster builds
+2. **Setup Node.js**: Installs Node.js 20 with npm caching for faster builds
 3. **Simplify Schema Names**: Runs a preprocessing script (`SimplifySchemaNames.cjs`) that:
    - Processes the `swagger.json` file
    - Simplifies verbose .NET type names in the OpenAPI schemas
@@ -91,7 +91,7 @@ The workflow uses the following secrets (configured in GitHub repository setting
 
 ### Prerequisites
 
-- Node.js 18 or higher
+- Node.js 20 or higher
 - npm (comes with Node.js)
 
 ### Setup and Running Locally

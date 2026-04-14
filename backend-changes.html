@@ -424,10 +424,10 @@
 
         <h2>- Validation on endpoint access</h2>
         <h3>Client does not have valid PowerOffice Go subscription</h3>
-        <p>Some endpoints, e.g. "TimeTracking", requires a subscription to PowerOffice Go module, e.g. "Time". If these requirements are not met, a Http error 403 unauthorized will be returned.
+        <p>Some endpoints, e.g. "TimeTracking", require a subscription to a PowerOffice Go module, e.g. "Time". If these requirements are not met, an HTTP 403 Forbidden error will be returned.
           It is possible to read this information from the access token by decoding it in a JWT tool.
-          Below is an example client that does not have a valid Time-subscription, and therefor the TimeTracking privileges are invalid, even though the integration has them.
-<pre><code>
+          Below is an example of a client that does not have a valid Time subscription, and therefore the TimeTracking privileges are invalid even though the integration has them.
+<pre><code>Example JWT token content
   {
     "goActiveClientSubscriptions": [
       "Accounting",
