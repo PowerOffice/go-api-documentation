@@ -34,3 +34,20 @@ A client without a valid Time subscription may see privileges such as `Reporting
     ]
   }
 ```
+
+## OData
+
+We are aware of an issue where users of our SDK is experiencing issues with datetime translation in queries.
+The SDK translates datetime queries without time information (e.g. 2026-04-15) to 2026-04-15T00:00.
+
+Example failing query
+```csharp
+var fromTransactionDate = new DateTime(2026-04-01);
+var toTransactionDate = new DateTime(2026-04-15);
+
+var timetrackings = api.TimeTracking.TimeTrackingEntry.Get()
+    .Where(x => x.Date >= fromTransactionDate && Date < toTransactionDate).ToList();
+```
+
+### Temporary mitigation
+Affected parties have been moved to old backend while we identify and implement a fix for the issue.
