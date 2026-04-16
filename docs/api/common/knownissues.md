@@ -51,3 +51,19 @@ var timetrackings = api.TimeTracking.TimeTrackingEntry.Get()
 
 ### Temporary mitigation
 Affected parties have been moved to old backend while we identify and implement a fix for the issue.
+
+## OrderBy
+Using the orderby operator with multiple properties does not work, due to a breaking change between OData version 3 and OData version 4.
+OData 4 requires a comma between properties, while OData 3 supported space.
+```curl
+# invalid
+Reporting/CustomerLedger?fromDate=1970-01-01&toDate=2026-04-13&top=100&skip=0&orderby=MatchId asc PostingDate desc
+
+# valid
+Reporting/CustomerLedger?fromDate=1970-01-01&toDate=2026-04-13&top=100&skip=0&orderby=MatchId asc, PostingDate desc
+```
+
+### Temporary mitigation
+Refer to OData 4 standard.
+
+We are working on a fix mitigate the breaking changes, so you as a developer do not have to edit your code.
