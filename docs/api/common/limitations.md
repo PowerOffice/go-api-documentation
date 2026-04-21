@@ -54,3 +54,37 @@ When requesting the latest data, we recommend filtering on LastChanged. This pro
 when the entity/object was last changed in the database. If you keep track of the last time you did a request
 for getting the latest data, and ensure that the current request is filtering LastChanged later than that time, 
 you will retrieve only data that has been updated since the last time you did the same request.
+
+## Access to endpoints
+
+## Validation on endpoint access
+
+### Client does not have a valid PowerOffice Go subscription
+
+Some endpoints require the client to have access to a specific PowerOffice Go module. For example, the `TimeTracking` endpoints require a valid subscription to the `Time` module.
+If the client does not have the required subscription, the API returns `403 Forbidden`, even if the integration itself has the necessary privileges.
+You can verify this by decoding the access token in a JWT tool. The `goInvalidPrivileges` property will show which privileges are unavailable for the client.
+
+Example JWT token content:
+
+```json
+{
+  "goActiveClientSubscriptions": [
+    "Accounting",
+    "Payroll",
+    "Quality"
+  ],
+  "goClientId": "CLIENTID",
+  "goClientName": "Klienten AS",
+  "goInvalidPrivileges": [
+    "Reporting_TimeTransaction_Full",
+    "TimeTracking_Full"
+  ],
+  "goUserId": "15faba1f-366b-4428-a72b-e10df7eeb998",
+  "role": [
+    "BankJournalVoucher_Full",
+    "BankTransfer_Full",
+    "Blob_Full"
+  ]
+}
+```
