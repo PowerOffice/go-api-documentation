@@ -1612,13 +1612,6 @@ var menuData = {
                       "Items": []
                     },
                     {
-                      "Name": "ClientIntegrationInformation",
-                      "Url": "api/reference/sdk/GoApi.ClientIntegrationInformation.md",
-                      "Ordering": 1,
-                      "CategoryPath": "\\C#\\Classes\\GoApi\\Client",
-                      "Items": []
-                    },
-                    {
                       "Name": "ClientService",
                       "Url": "api/reference/sdk/GoApi.Client.ClientService.md",
                       "Ordering": 1,
@@ -1669,6 +1662,13 @@ var menuData = {
                       ]
                     }
                   ]
+                },
+                {
+                  "Name": "ClientIntegrationInformation",
+                  "Url": "api/reference/sdk/GoApi.ClientIntegrationInformation.md",
+                  "Ordering": 1,
+                  "CategoryPath": "\\C#\\Classes\\GoApi",
+                  "Items": []
                 },
                 {
                   "Name": "Currency",
@@ -3784,6 +3784,13 @@ var menuData = {
                   "Items": []
                 },
                 {
+                  "Name": "ClientIntegrationInformation",
+                  "Url": "api/reference/sdk/GoApi.ClientIntegrationInformation.md",
+                  "Ordering": 1,
+                  "CategoryPath": "\\C#\\Objects\\Other",
+                  "Items": []
+                },
+                {
                   "Name": "ClientDocument",
                   "Url": "api/reference/sdk/GoApi.Documents.ClientDocument.md",
                   "Ordering": 1,
@@ -5778,6 +5785,13 @@ var menuData = {
                 {
                   "Name": "ClientContact[]",
                   "Url": "api/reference/rest/Type_ClientContact.md",
+                  "Ordering": 1,
+                  "CategoryPath": "\\REST\\Types\\Other",
+                  "Items": []
+                },
+                {
+                  "Name": "ClientIntegrationInformation",
+                  "Url": "api/reference/rest/Type_ClientIntegrationInformation.md",
                   "Ordering": 1,
                   "CategoryPath": "\\REST\\Types\\Other",
                   "Items": []
