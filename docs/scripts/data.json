@@ -5099,6 +5099,13 @@ var menuData = {
                   "Items": []
                 },
                 {
+                  "Name": "ClientIntegrationInformation",
+                  "Url": "api/reference/rest/Service_ClientIntegrationInformation.md",
+                  "Ordering": 1,
+                  "CategoryPath": "\\REST\\Services\\Other",
+                  "Items": []
+                },
+                {
                   "Name": "ClientBankAccount",
                   "Url": "api/reference/rest/Service_Bank_ClientBankAccount.md",
                   "Ordering": 1,
