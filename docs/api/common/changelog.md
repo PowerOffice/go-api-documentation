@@ -1,6 +1,9 @@
 # Changelog
 This file contains the full changelog of the PowerOffice Go API since the first release on the 26th of november 2015. All version numbers corresponds with the nuget release version, and the release dates are written with a norwegian date format (dd.MM.yyyy).
 
+### 3.0.1 (08.05.2026)
+- ClientIntegrationInformation: New endpoint listing the active PowerOffice Go modulues and priviliges on a given client.
+
 ### 3.0.0 (13.04.2026)
 - Added .NET 8.0 support via multi-targeting (net472;netstandard2.0;net8.0)
 - Replaced System.Web.HttpUtility with cross-platform alternatives

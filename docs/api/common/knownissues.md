@@ -36,6 +36,7 @@ A client without a valid Time subscription may see privileges such as `Reporting
 ```
 
 ## OData
+*A fix for this is scheduled for release 2026-04-28*
 
 We are aware of an issue where users of our SDK is experiencing issues with datetime translation in queries.
 The SDK translates datetime queries without time information (e.g. 2026-04-15) to 2026-04-15T00:00.
