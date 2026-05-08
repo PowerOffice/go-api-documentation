@@ -11,7 +11,7 @@ Service | Description
 [Budget](Service_Budget.md)|Service to query, create and delete [Budget](Type_Budget.md) .         A budget contains an estimate of the clients planned incomes and expenditures for a set period of time.         Updating a budget is in reality a delete and save, thus it is important that the updated budget is complete when saving.
 [Client](Service_Client.md)|Service to query and update [Client](Type_Client.md)
 [ClientAuth](Service_ClientAuth.md)|Service that provides an external integration methods for adding client integrations to PowerOffice Go from their system.
-[ClientIntegrationInformation](Service_ClientIntegrationInformation.md)|Service for retrieving integration information about the current client.
+[ClientIntegrationInformation](Service_ClientIntegrationInformation.md)|Service for retrieving integration information about the current client [ClientIntegrationInformation](Service_ClientIntegrationInformation.md).
 [ContactGroup](Service_ContactGroup.md)|Service providing methods for querying, creating and modifying [ContactGroup](Type_ContactGroup.md) .
 [ContactShareholder](Service_ContactShareholder.md)|Service providing methods for querying, creating and modifying [ContactShareholder](Type_ContactShareholder.md) .
 [ContactUltimateBeneficialOwner](Service_ContactUltimateBeneficialOwner.md)|Service providing methods for querying, creating and modifying [ContactUltimateBeneficialOwner](Type_ContactUltimateBeneficialOwner.md) .
