@@ -1665,10 +1665,18 @@ var menuData = {
                 },
                 {
                   "Name": "ClientIntegrationInformation",
-                  "Url": "api/reference/sdk/GoApi.ClientIntegrationInformation.md",
+                  "Url": "",
                   "Ordering": 1,
                   "CategoryPath": "\\C#\\Classes\\GoApi",
-                  "Items": []
+                  "Items": [
+                    {
+                      "name": "ClientIntegrationInformation",
+                      "Url": "api/reference/sdk/GoApi.ClientIntegrationInformation.md",
+                      "Ordering": 1,
+                      "CategoryPath": "\\C#\\Classes\\GoApi\\ClientIntegrationInformation",
+                      "Items": []
+                    }
+                  ]
                 },
                 {
                   "Name": "Currency",
