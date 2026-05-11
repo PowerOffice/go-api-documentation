@@ -157,6 +157,44 @@ This is an internal PowerOffice repository. When contributing:
 
 Note: Direct pushes to `dev` and `staging` branches will also trigger deployments to their respective environments.
 
+## Adding a New Endpoint (Documentation Workflow)
+
+Use this checklist whenever a new API endpoint is introduced so it is visible and navigable in the docs site.
+
+1. Update the OpenAPI specification
+   - Add or update the endpoint in `openapi/swagger.json`.
+   - If schema names need normalization, run:
+     ```bash
+     node ./openapi/SimplifySchemaNames.cjs ./openapi/swagger.json
+     ```
+
+2. Add REST reference content
+   - Create/update route documentation in `docs/api/reference/rest/` (for example `route_get_*.md`, `route_post_*.md`, etc.).
+   - If the endpoint belongs to a new service group, create `Service_<ServiceName>.md` in `docs/api/reference/rest/`.
+   - Add the service entry to `docs/api/reference/rest/services.md`.
+
+3. Add SDK reference content (if applicable)
+   - Add/update SDK pages in `docs/api/reference/sdk/` for affected models/services.
+   - Keep formatting consistent with existing SDK docs (headers, description, and property tables).
+
+4. Register sidebar navigation
+   - Update `docs/scripts/data.json` and add the endpoint/service in the correct section.
+   - Important: menu leaf nodes must have a valid `Url` and `Items: []`.
+   - Use `Url: null` only for expandable parent nodes that contain child `Items`.
+
+5. Validate locally
+   - Start docs locally:
+     ```bash
+     npm run dev
+     ```
+   - Confirm the new endpoint appears in the sidebar and opens correctly when clicked.
+   - Confirm direct hash navigation works (for example `#/Reference/Rest/Service_<ServiceName>.md`).
+
+6. Deploy and verify
+   - Push your branch (`dev`, `staging`, or `main`) and wait for GitHub Actions deployment.
+   - Open the deployed site and verify sidebar visibility and navigation again.
+   - If changes do not appear, do a hard refresh to clear cached assets.
+
 ## Support
 
 For questions or issues related to this repository, please contact the PowerOffice development team.
