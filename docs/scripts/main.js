@@ -98,11 +98,27 @@ godocs = {
 
 	downloadContent: function(url) {
 		var me = this;
-		//$.get('/Web/docs/api/' + url.toLowerCase() + '?_cb=' + Math.floor((Math.random() * 1000000) + 1), function (data) {
-		$.get('api/' + url.toLowerCase() + '?_cb=' + Math.floor((Math.random() * 1000000) + 1), function (data) {
+		var cacheBuster = Math.floor((Math.random() * 1000000) + 1),
+			primaryUrl = 'api/' + url + '?_cb=' + cacheBuster,
+			fallbackUrl = 'api/' + url.toLowerCase() + '?_cb=' + cacheBuster;
+
+		$.get(primaryUrl, function (data) {
 			me.initRenderer();
 			document.getElementById('content').innerHTML = marked(data);
 			godocs.connectAnchors('#content');
+		}).fail(function() {
+			if (fallbackUrl === primaryUrl) {
+				document.getElementById('content').innerHTML = '<h1>Failed to load content</h1><p>Please try again</p>';
+				return;
+			}
+
+			$.get(fallbackUrl, function (data) {
+				me.initRenderer();
+				document.getElementById('content').innerHTML = marked(data);
+				godocs.connectAnchors('#content');
+			}).fail(function() {
+				document.getElementById('content').innerHTML = '<h1>Failed to load content</h1><p>Please try again</p>';
+			});
 		});
 	},
 
