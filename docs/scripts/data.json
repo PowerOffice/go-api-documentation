@@ -5107,7 +5107,7 @@ var menuData = {
                 },
                 {
                   "Name": "ClientIntegrationInformation",
-                  "Url": "api/reference/rest/service_clientintegrationinformation.md",
+                  "Url": "api/reference/rest/Service_ClientIntegrationInformation.md",
                   "Ordering": 1,
                   "CategoryPath": "\\REST\\Services\\Other",
                   "Items": []
