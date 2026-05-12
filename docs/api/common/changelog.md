@@ -1,10 +1,15 @@
 # Changelog
 This file contains the full changelog of the PowerOffice Go API since the first release on the 26th of november 2015. All version numbers corresponds with the nuget release version, and the release dates are written with a norwegian date format (dd.MM.yyyy).
 
-### 3.00.0 (01.12.2025)
+### 3.0.1 (08.05.2026)
+- ClientIntegrationInformation: New endpoint listing the active PowerOffice Go modules and privileges on a given client.
+
+### 3.0.0 (13.04.2026)
 - Added .NET 8.0 support via multi-targeting (net472;netstandard2.0;net8.0)
 - Replaced System.Web.HttpUtility with cross-platform alternatives
 - GeneralLedgerAccount: Added IsEnterpriseRequired, IsFixedAssetsRequired, IsQuantityRequired, IsQuantity2Required, IsProductRequired, IsAgricultureProductRequired, IsActivityRequired, IsLocationRequired, IsDim1Required, IsDim2Required and IsDim3Required
+
+- **Removed Customer-object from CustomerLedgerResponse**. Use CustomerCode to identify the Customer, and fetch additional information from the Customer endpoint.
 
 ### 2.58.0 (24.01.2024):
 - AccrualBase: Added ResultAccountAgricultureDepartment and BalancingAccountAgricultureDepartment

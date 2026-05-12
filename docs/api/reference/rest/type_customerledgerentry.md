@@ -15,7 +15,6 @@ CreatedDate|Date|Gets the created date.
 CreatedFromImportJournalId|string (Guid)|Gets the id of the [Import](Type_Import.md) that created this sub ledger entry.
 CurrencyAmount|number|Gets or sets the currency amount.
 CurrencyCode|string|Gets or sets the currency code.
-Customer|[Customer](Type_Customer.md)|OBSOLETE - Gets or sets the customer.         Note: Returned object only contains Id, Code and Name of Customer, all other properties are empty (CustomerCreatedDate, CreatedDate and LastChanged are default value since they are not nullable).         Use Customer.Id (or CustomerCode) and query the Customer endpoint to get full Customer object.
 CustomerCode|number|Gets the code of the GoApi.Reporting.Ledger.CustomerLedgerEntry.Customer , used for filtering.
 CustomMatchingReference|string|Gets the custom matching reference set on the transaction. This property will only have value on entries created through the API or Import with CustomMatchingReference specified.
 DebtCollectionCaseCode|string|
