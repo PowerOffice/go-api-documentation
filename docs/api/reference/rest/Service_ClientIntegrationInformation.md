@@ -4,11 +4,11 @@ ClientIntegrationInformation
 
 Service for retrieving integration information about the current client.
 
-**Base Url**: `https://api.poweroffice.net/ClientIntegrationInformation/`
+**Base Url**: `https://api.poweroffice.net/clientintegrationinformation/`
 
 
 ### Routes
  Route | Method | Description
 :------|:-------|:------------
-[ClientIntegrationInformation/](Route_GET_ClientIntegrationInformation_.md)|GET|Get information about the integration.
+[ClientIntegrationInformation/](route_get_clientintegrationinformation_.md)|GET|Get information about the integration.
 
