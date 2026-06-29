@@ -29,14 +29,7 @@ jobs:
           cache: 'npm'
 
       - name: Set API server URL
-        run: |
-          node -e "
-          const fs = require('fs');
-          const spec = JSON.parse(fs.readFileSync('./openapi/swagger.json', 'utf8'));
-          spec.servers = [{ url: 'https://api.poweroffice.net', description: 'Production server' }];
-          fs.writeFileSync('./openapi/swagger.json', JSON.stringify(spec, null, 2) + '\n', 'utf8');
-          console.log('Servers URL set to https://api.poweroffice.net');
-          "
+        run: node ./openapi/set_server_url.js
 
       - name: Simplify schema names
         run: node ./openapi/SimplifySchemaNames.cjs ./openapi/swagger.json
