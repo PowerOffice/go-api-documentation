@@ -4,6 +4,12 @@
     "title": "Web.ExternalApiCore",
     "version": "1.0"
   },
+  "servers": [
+    {
+      "url": "https://api.poweroffice.net",
+      "description": "Production server"
+    }
+  ],
   "paths": {
     "/Reporting/AccountTransactions": {
       "get": {
@@ -72108,7 +72114,7 @@
           },
           "routeValues": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true
           }
         },
@@ -79174,7 +79180,7 @@
           },
           "fields": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true
           },
           "batchItemErrors": {
@@ -82053,7 +82059,7 @@
             "items": {
               "type": "string"
             },
-            "description": "All active Go-subscriptions for the client.\r\nAvailable subscriptions:\r\n- Accounting (Regnskap og faktura)\r\n- TimeTracking (Timeregistrering)\r\n- Payroll (Lønn)\r\n- TravelExpense (Reiseregning)\r\n- AccountingMicro (Regnskap Mikro)\r\n- Quality\r\n- HolidayAndLeave (Ferie og fravær)\r\n- CustomerCheck (kundesjekk.no)\r\n- AccountingNano (Regnskap og faktura)\r\n- YearEndSoleProprietorship (Skattemelding ENK)",
+            "description": "All active Go-subscriptions for the client.\r\nAvailable subscriptions:\r\n- Accounting (Regnskap og faktura)\r\n- TimeTracking (Timeregistrering)\r\n- Payroll (L\u00f8nn)\r\n- TravelExpense (Reiseregning)\r\n- AccountingMicro (Regnskap Mikro)\r\n- Quality\r\n- HolidayAndLeave (Ferie og frav\u00e6r)\r\n- CustomerCheck (kundesjekk.no)\r\n- AccountingNano (Regnskap og faktura)\r\n- YearEndSoleProprietorship (Skattemelding ENK)",
             "nullable": true,
             "readOnly": true
           },
@@ -82109,7 +82115,7 @@
   },
   "security": [
     {
-      "bearerAuth": [ ]
+      "bearerAuth": []
     }
   ]
 }
