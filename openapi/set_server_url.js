@@ -30,7 +30,10 @@ try {
   process.exit(1);
 }
 
-spec.servers = [{ url: 'https://api.poweroffice.net', description: 'Production server' }];
+spec.servers = [
+  { url: 'https://api.poweroffice.net', description: 'Production server' },
+  { url: 'https://api-demo.poweroffice.net', description: 'Demo server' },
+];
 
 fs.writeFileSync(swaggerPath, JSON.stringify(spec, null, 2) + '\n', 'utf8');
-console.log('Servers URL set to https://api.poweroffice.net');
+console.log('Servers set: https://api.poweroffice.net, https://api-demo.poweroffice.net');
