@@ -37,6 +37,7 @@ const copyStaticFilesPlugin = () => ({
     // Copy root level static files
     const staticFiles = [
       'robots.txt',
+      'sitemap.xml',
       'api-docs.html',
       'backend-changes.html',
       'poweroffice-api-index.html',
