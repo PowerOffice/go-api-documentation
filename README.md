@@ -1,3 +1,6 @@
+# IMPORTANT NOTE
+This repo documents the legacy version of PowerOffice API. Please refer to [developer.poweroffice.net](https://developer.poweroffice.net) for documentation of the current API version.
+
 # PowerOffice Go API Documentation
 
 [![Azure Static Web Apps CI/CD](https://github.com/PowerOffice/go-api-documentation/actions/workflows/azure-static-web-apps-gray-stone-017611203.yml/badge.svg)](https://github.com/PowerOffice/go-api-documentation/actions/workflows/azure-static-web-apps-gray-stone-017611203.yml)
