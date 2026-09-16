@@ -21,7 +21,7 @@ have probably received an integration key targeting the demo environment. Please
 
 # The authorization process
 
-Befor any API calls can be made, you must obtain an access key from the authorization server. The access key must be provided with all calls to the API.
+Before any API calls can be made, you must obtain an access key from the authorization server. The access key must be provided with all calls to the API.
 
 The authentication process use the oAuth2.0 client credentials grant flow to request and provide access keys. All calls must be made with the https protocol. Http requests will be denied.
 
@@ -29,7 +29,7 @@ When you have obtained an *application key* and an *client key* following the pr
 
 When you send the *application key* and the *client key* to the authorization server, you will receive an *access token* from the authorization server.
 
-The *access token* is then provided to all API calls. The *access token* will expire after 10 minutes. You will then need to request a new *access token* from the authorization server.
+The *access token* is then provided to all API calls. The *access token* will expire after 20 minutes. You will then need to request a new *access token* from the authorization server.
 
 
 ## Requesting access
@@ -58,7 +58,7 @@ Access-Control-Allow-Origin: *
 {
 	"access_token":"JSM8aIY5SQofcuLZnOkTvuTL5N-RLepbX2xdUIE39zW-JhCQDyqAnXjUMW1nbfA2u3My4iWny5pA1u_wceV64WWPj9UUo927cp5AKojxbkH8Wbjnie2656VXzZ6nnftYl55j3Dz-5t_a8YPHgaPGkMXJ6tus2sagtsrb6MiPoxD36dGyPiefmLVthO9DfvM2UmDGXCwjV9yPI5g4QNEqvOmLwGAWnjo8s0oVsT7IMhsBZQe4rFIUNRkuF1-qwySMy_eMpbfoXKaiTYMowDb8f8pxMuWGn7HOLS2vEXq72m-Bl95hKNcGRbFcww1WFGDy7_0q3QaIxHxz4sImFZf5xaD0cxDt2YFMlaD9UjheR6OfKjcYbhg7PK_wNh-VNzTNJKMUu8zdRTiO28QBxLq91TQHnRaS4_V-FYhxOiR3LyGFDzBXzBZyUfVd5_GxjT4H8JdPGoqz85ffZRm2YetBCnPP_ue5XPvSoHhKX_ANsxH8Tf7bn4QVChiR3oS4KTTs",
 	"token_type":"bearer",
-	"expires_in":599
+	"expires_in":1200
 }
 ```
 
