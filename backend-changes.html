@@ -21,6 +21,9 @@
         --alert-border: #ffc107;
         --alert-text: #856404;
         --border-color: #ddd;
+        --error-bg: #f8d7da;
+        --error-border: #f5c6cb;
+        --error-text: #721c24;
       }
 
       body.dark-mode {
@@ -38,6 +41,9 @@
         --alert-border: #ea802c;
         --alert-text: #fef3c7;
         --border-color: #3f3f46;
+        --error-bg: #5a1a1e;
+        --error-border: #c33c3c;
+        --error-text: #f8a5a5;
       }
 
       * {
@@ -128,6 +134,24 @@
         color: var(--alert-text);
         margin-bottom: 0.5rem;
         font-size: 1.2rem;
+      }
+
+      .alert-error {
+        background: var(--error-bg);
+        border-left: 4px solid var(--error-border);
+        padding: 1rem;
+        margin-bottom: 2rem;
+        border-radius: 4px;
+      }
+
+      .alert-error h2 {
+        color: var(--error-text);
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+      }
+
+      .alert-error p {
+        color: var(--error-text);
       }
 
       .content h1 {
@@ -302,7 +326,7 @@
       >
 
        
-        <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+        <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="5"/>
           <line x1="12" y1="1" x2="12" y2="3"/>
           <line x1="12" y1="21" x2="12" y2="23"/>
@@ -321,6 +345,14 @@
 
 
     <div class="container">
+      <div class="alert-error">
+        <h2>🚨 Demo Environment Issue</h2>
+        <p>A misconfiguration caused our demo environment - <strong>api-demo.poweroffice.net</strong> to crash on October 1st 2026 at approximately 09:50.</p>
+        <p>A fix is being worked on, and will be deployed as soon as possible.</p>
+        <p>Sorry for the inconvenience, and thank you for your patience.</p>
+        <p style="margin-top: 1rem; font-style: italic;">- The PowerOffice API team</p>
+      </div>
+
       <div class="alert">
         <h2>⚠️ Important Notice</h2>
         <p>This page contains critical information about backend changes that may affect your integration with the PowerOffice Go API. Please read carefully.</p>
@@ -329,7 +361,7 @@
       <div class="rollout-progress">
         <h3>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+            <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.52l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.34.24.52.49.52h4c.25 0 .46-.18.49-.52l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
           </svg>
           Backend Upgrade Rollout Progress
         </h3>
@@ -399,9 +431,9 @@
         
         grant_type=client_credentials</code></pre>
 
-        <h3>- Access token format is updated to be JSON Web Token compatible.</h3> <p>The new access token contains information about the client. JWT is documented in <a href="https://datatracker.ietf.org/doc/html/rfc7519">RFC7519</a></p>
+        <h3>- Access token format is updated to be JSON Web Token compatible.</h3> <p>The new access token contains information about the client. JWT is documented in <a href="https://datatracker.ietf.org/doc/html/rfc7519">RFC 7519</a></p>
     
-        <pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnb0FjdGl2ZUNsaWVudFN1YnNjcmlwdGlvbnMiOlsiQWNjb3VudGluZyIsIlRpbWVUcmFja2luZyIsIlBheXJvbGwiLCJUcmF2ZWxFeHBlbnNlIiwiUXVhbGl0eSIsIkhvbGlkYXlBbmRMZWF2ZSJdLCJnb0NsaWVudElkIjoiYWEwYWU1YWEtY2NjZS00ZTMwLWFhNjMtMDY1ZTgyY2FkZWE0IiwiZ29DbGllbnROYW1lIjoiV0lERVLDmEUgQVMiLCJnb1VzZXJJZCI6IjU1ZDUxMGM3LWJkNWUtNDQ2OS04ODhlLTc2NDViMDg0ZGMzNiIsInJvbGUiOlsiQmFua0pvdXJuYWxWb3VjaGVyX0Z1bGwiLCJCYW5rVHJhbnNmZXJfRnVsbCIsIkJsb2JfRnVsbCIsIkJ1ZGdldF9GdWxsIiwiQ2FzaEpvdXJuYWxWb3VjaGVyX0Z1bGwiLCJDbGllbnRCYW5rQWNjb3VudF9GdWxsIiwiQ29tbW9uU2VydmljZXNfRnVsbCIsIkNvbnRhY3RHcm91cF9GdWxsIiwiQ3VzdG9tRGltZW5zaW9uRGVmaW5pdGlvbl9GdWxsIiwiQ3VzdG9tRGltZW5zaW9uVmFsdWVfRnVsbCIsIkN1c3RvbWVyX0Z1bGwiLCJEZWJ0Q29sbGVjdGlvbl9GdWxsIiwiRGVwYXJ0bWVudF9GdWxsIiwiRG9jdW1lbnRzX0Z1bGwiLCJFbXBsb3llZV9GdWxsIiwiRXhwZW5zZVZvdWNoZXJfRnVsbCIsIkV4dGVybmFsbHlEZWxpdmVyYWJsZUludm9pY2VfRnVsbCIsIkZhY3RvcmluZ19GdWxsIiwiRmluYW5jaW5nX0Z1bGwiLCJHZW5lcmFsTGVkZ2VyQWNjb3VudF9GdWxsIiwiSW1wb3J0X0Z1bGwiLCJJbmNvbWluZ0ludm9pY2VWb3VjaGVyX0Z1bGwiLCJJbnZvaWNlQXR0YWNobWVudF9GdWxsIiwiSm91cm5hbEVudHJ5Vm91Y2hlcl9GdWxsIiwiTG9jYXRpb25fRnVsbCIsIk1hbnVhbEpvdXJuYWxWb3VjaGVyX0Z1bGwiLCJPdXRnb2luZ0ludm9pY2VfRnVsbCIsIk91dGdvaW5nSW52b2ljZVZvdWNoZXJfRnVsbCIsIlBhcnR5QmFua0FjY291bnRfRnVsbCIsIlBhcnR5Q29udGFjdFBlcnNvbl9GdWxsIiwiUGF5cm9sbF9GdWxsIiwiUGF5cm9sbEpvdXJuYWxWb3VjaGVyX0Z1bGwiLCJQcm9kdWN0X0Z1bGwiLCJQcm9qZWN0X0Z1bGwiLCJRdWFsaXR5X0Z1bGwiLCJRdW90ZV9GdWxsIiwiUmVwb3J0aW5nX0FjY291bnRUcmFuc2FjdGlvbl9GdWxsIiwiUmVwb3J0aW5nX0N1c3RvbWVyTGVkZ2VyX0Z1bGwiLCJSZXBvcnRpbmdfSW52b2ljZUpvdXJuYWxfRnVsbCIsIlJlcG9ydGluZ19TdXBwbGllckxlZGdlcl9GdWxsIiwiUmVwb3J0aW5nX1RpbWVUcmFuc2FjdGlvbl9GdWxsIiwiUmVwb3J0aW5nX1RyaWFsQmFsYW5jZV9GdWxsIiwiUmVwb3J0aW5nX1VzYWdlX0Z1bGwiLCJTaGFyZWhvbGRlcl9GdWxsIiwiU3VwcGxpZXJfRnVsbCIsIlRpbWVUcmFja2luZ19GdWxsIiwiVUJPX0Z1bGwiLCJWb3VjaGVyRG9jdW1lbnRhdGlvbl9GdWxsIiwiWWVhckVuZEpvdXJuYWxWb3VjaGVyX0Z1bGwiXSwidW5pcXVlX25hbWUiOiI1NWQ1MTBjNy1iZDVlLTQ0NjktODg4ZS03NjQ1YjA4NGRjMzYiLCJuYmYiOjE3NjM5OTIzNDcsImV4cCI6MTc2Mzk5MzU0NywiaWF0IjoxNzYzOTkyMzQ3LCJpc3MiOiJodHRwczovL3Rlc3QtZ28tYXBwLWFwaXYyYXV0aG9yaXphdGlvbi1ldXJ3LmF6dXJld2Vic2l0ZXMubmV0LyIsImF1ZCI6Imh0dHBzOi8vdGVzdC1nby1hcHAtYXBpdjItZXVydy5henVyZXdlYnNpdGVzLm5ldC8ifQ.n8Ipte7rIQ3M9DtpzXjbEM-9KjqS9-l63gK4fdwvqws</code></pre>
+        <pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnb0FjdGl2ZUNsaWVudFN1YnNjcmlwdGlvbnMiOlsiQWNjb3VudGluZyIsIlRpbWVUcmFja2luZyIsIlBheXJvbGwiLCJUcmF2ZWxFeHBlbnNlIiwiUXVhbGl0eSIsIkhvbGlkYXlNYW5hZ2VtZW50Il0sImdvQ2xpZW50SWQiOiI3ZWM1NGZkOC0wNzY4LTQ0ZTItYTlhYy1jNDMxNzAwODU1NjEiLCJnb0NsaWVudE5hbWUiOiJUZXN0IEFTIiwiZ29JbnZhbGlkUHJpdmlsZWdlcyI6WyJSZXBvcnRpbmdfVGltZVRyYW5zYWN0aW9uX0Z1bGwiLCJUaW1lVHJhY2tpbmdfe0Z1bGwiXSwiZ29Vc2VySWQiOiIxNWZhYmExZi0zNjZiLTQ0MjgtYTcyYi1lMTBkZjdlZWI5OTgiLCJyb2xlIjpbIkJhbmtKb3VybmFsVm91Y2hlcl9GdWxsIiwiQmFua1RyYW5zZmVyX0Z1bGwiLCJCbG9iX0Z1bGwiXX0.8Gtn-77xWCv3WpHzJwdVCZHhqGdGvWLYk0R_CQhSi_Y</code></pre>
 
         <h3>- Access token time to live is expanded from 10 minutes (600 seconds) to 20 minutes (1200 seconds).</h3>
 
