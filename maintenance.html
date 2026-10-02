@@ -21,9 +21,9 @@
         --alert-border: #ffc107;
         --alert-text: #856404;
         --border-color: #ddd;
-        --error-bg: #f8d7da;
-        --error-border: #f5c6cb;
-        --error-text: #721c24;
+        --success-bg: #d4edda;
+        --success-border: #c3e6cb;
+        --success-text: #155724;
       }
 
       body.dark-mode {
@@ -41,9 +41,9 @@
         --alert-border: #ea802c;
         --alert-text: #fef3c7;
         --border-color: #3f3f46;
-        --error-bg: #5a1a1e;
-        --error-border: #c33c3c;
-        --error-text: #f8a5a5;
+        --success-bg: #1a3a1a;
+        --success-border: #2d5a2d;
+        --success-text: #86f786;
       }
 
       * {
@@ -136,22 +136,22 @@
         font-size: 1.2rem;
       }
 
-      .alert-error {
-        background: var(--error-bg);
-        border-left: 4px solid var(--error-border);
+      .alert-success {
+        background: var(--success-bg);
+        border-left: 4px solid var(--success-border);
         padding: 1rem;
         margin-bottom: 2rem;
         border-radius: 4px;
       }
 
-      .alert-error h2 {
-        color: var(--error-text);
+      .alert-success h2 {
+        color: var(--success-text);
         margin-bottom: 0.5rem;
         font-size: 1.2rem;
       }
 
-      .alert-error p {
-        color: var(--error-text);
+      .alert-success p {
+        color: var(--success-text);
       }
 
       .content h1 {
@@ -345,11 +345,12 @@
 
 
     <div class="container">
-      <div class="alert-error">
-        <h2>🚨 Demo Environment Issue</h2>
-        <p>A misconfiguration caused our demo environment - <strong>api-demo.poweroffice.net</strong> to crash on October 1st 2026 at approximately 09:50.</p>
-        <p>A fix is being worked on, and will be deployed as soon as possible.</p>
-        <p>Sorry for the inconvenience, and thank you for your patience.</p>
+      <div class="alert-success">
+        <h2>✅ Demo Environment - Resolved</h2>
+        <p><strong>Issue Status:</strong> RESOLVED</p>
+        <p>The misconfiguration that caused our demo environment - <strong>api-demo.poweroffice.net</strong> to crash on October 1st 2026 at approximately 09:50 has been fixed and deployed.</p>
+        <p><strong>Resolution Time:</strong> October 2nd 2026 at 09:30</p>
+        <p>The demo environment is now fully operational. Thank you for your patience during this maintenance window.</p>
         <p style="margin-top: 1rem; font-style: italic;">- The PowerOffice API team</p>
       </div>
 
@@ -375,6 +376,8 @@
           <span class="progress-percentage" id="progressPercentage"></span>
           <span class="progress-status" id="progressStatus"></span>
         </div>
+        <div>2026-10-02 09:30: Demo environment issue resolved and fix deployed successfully.</div>
+        <div>2026-10-01 09:50: Demo environment misconfiguration caused crash.</div>
         <div>2026-04-13 11:00: All clients are migrated to the new backend. We are monitoring for unexpected events, but everything looks good.</div>
         <div>2026-03-10 12:00: Rollout is currently in progress for selected partners.</div>
         <div>2026-02-13 12:00: We are aware of an issue where properties are set to their default value. This causes errors when updating object. Fix is expected February 18th</div>
